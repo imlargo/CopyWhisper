@@ -20,7 +20,7 @@
 	</div>
 
 	<span class="inline-flex w-4/5 mt-3 text-sm text-slate-400">
-		{#if storePage.descripcion === ""}
+		{#if storePage.descripcion === ''}
 			Ups! No hay descripción disponible
 		{:else}
 			{storePage.descripcion}

@@ -50,12 +50,14 @@ export async function getPage(link: string) {
 		const rawHtml = await response.text();
 		const dom = parseHTML(rawHtml);
 
-
 		const titulo = dom.querySelector('title').textContent;
-		const descripcion = dom.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+		const descripcion =
+			dom.querySelector('meta[name="description"]')?.getAttribute('content') || '';
 		const encabezados = getEncabezados(dom);
 		const tree = getTree(encabezados);
-		const markdown = convertToMarkdown(dom.querySelector('body').innerHTML.trim().replace(/\s+/g, ' '));
+		const markdown = convertToMarkdown(
+			dom.querySelector('body').innerHTML.trim().replace(/\s+/g, ' ')
+		);
 		const renderedMarkdown = convertToHtml(markdown);
 
 		const data: PageData = {
@@ -67,7 +69,7 @@ export async function getPage(link: string) {
 			encabezados,
 			tree,
 			markdown,
-			renderedMarkdown,
+			renderedMarkdown
 		};
 
 		return data;
