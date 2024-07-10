@@ -32,7 +32,6 @@
 			<Stat />
 		</div>
 
-
 		{#each storePage.tree as item}
 			<Arbol encabezado={item.encabezado} children={item.children} />
 		{/each}

@@ -20,7 +20,10 @@ function getEncabezados(dom: HTMLElement): Encabezado[] {
 function injectChild(tree, item): void {
 	const lastItem = tree.at(-1);
 
-	if (!lastItem || parseInt(lastItem.encabezado.tag.slice(1)) >= parseInt(item.encabezado.tag.slice(1))) {
+	if (
+		!lastItem ||
+		parseInt(lastItem.encabezado.tag.slice(1)) >= parseInt(item.encabezado.tag.slice(1))
+	) {
 		tree.push(item);
 	} else {
 		return injectChild(lastItem.children, item);

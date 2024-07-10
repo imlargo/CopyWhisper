@@ -1,6 +1,6 @@
 <script>
 	const { encabezado, children } = $props();
-    const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
+	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
 </script>
 
 <ul>
@@ -16,7 +16,7 @@
 </ul>
 
 <style>
-    a {
+	a {
 		--pad-inline: 0rem;
 		display: block;
 		padding-inline: calc(1rem * var(--depth) + var(--pad-inline)) var(--pad-inline);
