@@ -19,7 +19,13 @@
 		>
 	</div>
 
-	<span class="inline-flex w-4/5 mt-3 text-sm text-slate-400">{storePage.descripcion}</span>
+	<span class="inline-flex w-4/5 mt-3 text-sm text-slate-400">
+		{#if storePage.descripcion === ""}
+			Ups! No hay descripción disponible
+		{:else}
+			{storePage.descripcion}
+		{/if}
+	</span>
 </div>
 
 <style lang="scss">
