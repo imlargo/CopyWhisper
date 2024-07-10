@@ -8,6 +8,8 @@ class StorePage implements PageData {
 	data = $state('');
 	ok = $state(false);
 	tree = $state([]);
+	markdown = $state('');
+	renderedMarkdown = $state('');
 
 	init(pageData: PageData) {
 		this.ok = true;
@@ -17,6 +19,8 @@ class StorePage implements PageData {
 		this.encabezados = pageData.encabezados;
 		this.data = pageData.data;
 		this.tree = pageData.tree;
+		this.markdown = pageData.markdown;
+		this.renderedMarkdown = pageData.renderedMarkdown;
 	}
 }
 

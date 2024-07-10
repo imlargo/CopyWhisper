@@ -10,4 +10,6 @@ export interface PageData {
 	encabezados: Encabezado[];
 	data: string;
 	tree: any[];
+	markdown: string;
+	renderedMarkdown: string;
 }

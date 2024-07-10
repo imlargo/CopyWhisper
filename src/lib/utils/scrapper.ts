@@ -1,4 +1,5 @@
 import type { PageData, Encabezado } from '$lib/types';
+import { convertToMarkdown, convertToHtml } from '$src/lib/utils/markdown-service';
 
 function parseHTML(rawHtml: string) {
 	const element = document.createElement('html');
@@ -49,15 +50,24 @@ export async function getPage(link: string) {
 		const rawHtml = await response.text();
 		const dom = parseHTML(rawHtml);
 
+
+		const titulo = dom.querySelector('title').textContent;
+		const descripcion = dom.querySelector('meta[name="description"]')?.getAttribute('content') || '';
 		const encabezados = getEncabezados(dom);
+		const tree = getTree(encabezados);
+		const markdown = convertToMarkdown(dom.querySelector('body').innerHTML.trim().replace(/\s+/g, ' '));
+		const renderedMarkdown = convertToHtml(markdown);
 
 		const data: PageData = {
 			link: isFull ? link : link,
-			titulo: dom.querySelector('title').textContent,
-			descripcion: dom.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-			encabezados: encabezados,
 			data: rawHtml,
-			tree: getTree(encabezados)
+
+			titulo,
+			descripcion,
+			encabezados,
+			tree,
+			markdown,
+			renderedMarkdown,
 		};
 
 		return data;

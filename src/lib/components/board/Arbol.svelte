@@ -5,7 +5,7 @@
 
 <ul>
 	<li>
-		<a href="/" style:--depth={depth}>- {encabezado.texto}</a>
+		<a href="/" class="py-1.5" style:--depth={depth}>{encabezado.texto}</a>
 
 		{#if children.length > 0}
 			{#each children as hijo}

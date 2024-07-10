@@ -6,6 +6,9 @@
 	import Stat from '$src/lib/components/board/Stat.svelte';
 	import RowEncabezado from '$src/lib/components/board/RowEncabezado.svelte';
 	import Arbol from '$src/lib/components/board/Arbol.svelte';
+	import Markdown from '$src/lib/components/board/Markdown.svelte';
+
+	import ListadoHeaders from '$src/lib/components/board/ListadoHeaders.svelte';
 
 	import { storePage } from '$stores/StorePage.svelte';
 </script>
@@ -32,9 +35,7 @@
 			<Stat />
 		</div>
 
-		{#each storePage.tree as item}
-			<Arbol encabezado={item.encabezado} children={item.children} />
-		{/each}
+		<ListadoHeaders />
 
 		<div class="grid grid-cols-6 gap-x-7 mt-7 mb-2">
 			<span class="font-semibold col-span-2">Titulo</span>
@@ -48,6 +49,18 @@
 			{#each storePage.encabezados as encabezado}
 				<RowEncabezado {encabezado} />
 			{/each}
+		</div>
+
+		<div class="grid grid-cols-4">
+			<div class="col-span-1">
+				{#each storePage.tree as item}
+					<Arbol encabezado={item.encabezado} children={item.children} />
+				{/each}
+			</div>
+
+			<div class="col-span-3">
+				<Markdown html={storePage.renderedMarkdown} />
+			</div>
 		</div>
 	</section>
 </main>
