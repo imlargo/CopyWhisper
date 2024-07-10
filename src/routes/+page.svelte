@@ -25,57 +25,54 @@
 </div>
 
 <main class="page-container py-32">
+	<Head />
 
-		<Head />
+	<div class="grid grid-cols-4 gap-4 py-4">
+		<Stat tipo="Titulos" valor={storePage.encabezados.length || 0} />
+		<Stat tipo="Calificacion" />
+		<Stat tipo="Ortografia" />
+		<Stat />
+	</div>
 
-		<div class="grid grid-cols-4 gap-4 py-4">
-			<Stat tipo="Titulos" valor={storePage.encabezados.length || 0} />
-			<Stat tipo="Calificacion" />
-			<Stat tipo="Ortografia"  />
-			<Stat />
+	<section class="py-12">
+		<div class="flex justify-between">
+			<h5>Encabezados</h5>
+
+			<ListadoHeaders />
 		</div>
 
-		<section class="py-12">
-
-			<div class="flex justify-between">
-				<h5>Encabezados</h5>
-
-				<ListadoHeaders />
-			</div>
-
-			<div class="grid grid-cols-12 gap-x-7 mt-12 mb-2">
-				<span class="text-sm font-semibold col-span-5">Titulo</span>
-				<span class="text-sm font-semibold col-span-2">Calificacion</span>
-				<span class="text-sm font-semibold col-span-2">Etiqueta</span>
-				<span class="text-sm font-semibold col-span-1">Errores</span>
-				<span class="text-sm font-semibold col-span-2"></span>
-			</div>
-	
-			<div class="encabezados  grid flex-col">
-				{#each storePage.encabezados as encabezado}
-					<RowEncabezado {encabezado} />
-				{/each}
-			</div>
-		</section>
-
-		<hr>
-
-		<div class="grid grid-cols-4 py-12">
-			<div class="col-span-1">
-				{#each storePage.tree as item}
-					<Arbol encabezado={item.encabezado} children={item.children} />
-				{/each}
-			</div>
-
-			<div class="col-span-3">
-				<Markdown html={storePage.renderedMarkdown} />
-			</div>
+		<div class="grid grid-cols-12 gap-x-7 mt-12 mb-2">
+			<span class="text-sm font-semibold col-span-5">Titulo</span>
+			<span class="text-sm font-semibold col-span-2">Calificacion</span>
+			<span class="text-sm font-semibold col-span-2">Etiqueta</span>
+			<span class="text-sm font-semibold col-span-1">Errores</span>
+			<span class="text-sm font-semibold col-span-2"></span>
 		</div>
+
+		<div class="encabezados grid flex-col">
+			{#each storePage.encabezados as encabezado}
+				<RowEncabezado {encabezado} />
+			{/each}
+		</div>
+	</section>
+
+	<hr />
+
+	<div class="grid grid-cols-4 py-12">
+		<div class="col-span-1">
+			{#each storePage.tree as item}
+				<Arbol encabezado={item.encabezado} children={item.children} />
+			{/each}
+		</div>
+
+		<div class="col-span-3">
+			<Markdown html={storePage.renderedMarkdown} />
+		</div>
+	</div>
 </main>
 
 <style lang="scss">
 	.page-container {
 		@apply mx-auto w-full md:max-w-screen-sm lg:max-w-screen-xl px-5;
 	}
-
 </style>

@@ -3,8 +3,11 @@
 	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
 </script>
 
-<div style:--depth={depth} class="grid grid-cols-12 items-center gap-x-7 border-b border-zinc-800 py-3 text-zinc-400">
-	<span class="heading col-span-5 text-wrap">{encabezado.texto}</span>
+<div
+	style:--depth={depth}
+	class="grid grid-cols-12 items-center gap-x-7 border-b border-zinc-800 py-3 text-zinc-400"
+>
+	<span class="heading col-span-5 truncate">{encabezado.texto}</span>
 	<span class="col-span-2">4.0</span>
 	<span class="col-span-2">{encabezado.tag}</span>
 	<span class="col-span-1">0</span>
@@ -16,7 +19,6 @@
 <style lang="scss">
 	.heading {
 		display: block;
-		padding-inline: calc(1.25rem * var(--depth));
+		padding-inline: calc(1.5rem * var(--depth));
 	}
 </style>
-

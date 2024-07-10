@@ -42,22 +42,34 @@ function getTree(encabezados: Encabezado[]) {
 	return tree;
 }
 
+function clearDOM(htmlElement: HTMLElement) {
+	const deleteItem = (element: HTMLElement, selector: string) =>
+		element.querySelectorAll(selector).forEach((s) => s.remove());
+
+	deleteItem(htmlElement, 'script');
+	deleteItem(htmlElement, 'style');
+	deleteItem(htmlElement, 'link');
+	deleteItem(htmlElement, 'noscript');
+	deleteItem(htmlElement, 'iframe');
+	deleteItem(htmlElement, 'svg');
+
+	return htmlElement;
+}
+
 export async function getPage(link: string) {
 	const isFull = link.startsWith('http://') || link.startsWith('https://');
 
 	try {
 		const response = await fetch(isFull ? link : `https://${link}`);
 		const rawHtml = await response.text();
-		const dom = parseHTML(rawHtml);
+		const dom = clearDOM(parseHTML(rawHtml));
 
 		const titulo = dom.querySelector('title').textContent;
 		const descripcion =
 			dom.querySelector('meta[name="description"]')?.getAttribute('content') || '';
 		const encabezados = getEncabezados(dom);
 		const tree = getTree(encabezados);
-		const markdown = convertToMarkdown(
-			dom.querySelector('body').innerHTML.trim().replace(/\s+/g, ' ')
-		);
+		const markdown = convertToMarkdown(dom.querySelector('body'));
 		const renderedMarkdown = convertToHtml(markdown);
 
 		const data: PageData = {

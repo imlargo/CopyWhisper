@@ -12,8 +12,8 @@ const turndownService = new TurndownService({
 	linkStyle: 'inlined'
 });
 
-export function convertToMarkdown(rawHTML: string): string {
-	return turndownService.turndown(rawHTML);
+export function convertToMarkdown(body: HTMLElement): string {
+	return turndownService.turndown(body).trim().replace(/\s+/g, ' ');
 }
 
 export function convertToHtml(markdown: string): string {

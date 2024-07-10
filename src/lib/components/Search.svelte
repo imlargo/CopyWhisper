@@ -22,7 +22,13 @@
 
 <div class="flex justify-center py-8 mx-auto">
 	<div class="flex gap-3">
-		<input type="text" class="rounded-full py-2 px-6 text-black" placeholder="Ingresa el link de tu sitio" />
-		<button onclick={handleSubmit} class="rounded-full font-medium text-black px-6 py-2 bg-white">Buscar</button>
+		<input
+			type="text"
+			class="rounded-full py-2 px-6 text-black"
+			placeholder="Ingresa el link de tu sitio"
+		/>
+		<button onclick={handleSubmit} class="rounded-full font-medium text-black px-6 py-2 bg-white"
+			>Buscar</button
+		>
 	</div>
 </div>

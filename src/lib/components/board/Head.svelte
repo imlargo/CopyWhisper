@@ -8,14 +8,16 @@
 			<span class="ring-4 h-2 w-2 rounded-full {storePage.ok ? 'ok' : 'notok'}"></span>
 
 			<div class="flex gap-4">
-				<span>{storePage.titulo}</span>
-				<span class="text-zinc-700">/</span>
 				<span>{storePage.link}</span>
+				<span class="text-zinc-700">/</span>
+				<span>{storePage.titulo}</span>
 			</div>
-			
 		</div>
 
-		<span class="inline-flex h-min items-center rounded-md bg-purple-700/10 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/60">Badge</span>
+		<span
+			class="inline-flex h-min items-center rounded-md bg-purple-700/10 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/60"
+			>Badge</span
+		>
 	</div>
 
 	<span class="inline-flex w-6/12 text-pretty mt-6 text-zinc-400">
