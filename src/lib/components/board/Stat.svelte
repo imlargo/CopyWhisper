@@ -2,7 +2,7 @@
 	const { tipo = 'Estadistica', valor = 13 } = $props();
 </script>
 
-<div class="border border-slate-500 p-5">
-	<h5 class="text-slate-400">{tipo}</h5>
-	<span class="inline-flex text-4xl font-mono mt-3">{valor}</span>
+<div class="border border-zinc-600 rounded-xl p-7">
+	<h5 class="text-zinc-500">{tipo}</h5>
+	<span class="inline-flex text-4xl font-medium font-mono mt-3">{valor}</span>
 </div>

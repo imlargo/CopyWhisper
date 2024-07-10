@@ -1,11 +1,22 @@
 <script>
 	const { encabezado } = $props();
+	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
 </script>
 
-<div class="grid grid-cols-6 gap-x-7 border-b border-slate-800 py-3 text-slate-400">
-	<span class="col-span-2 text-wrap">{encabezado.texto}</span>
-	<span>Calificacion</span>
-	<span>{encabezado.tag}</span>
-	<span>0</span>
-	<button class="rounded bg-white/10">Mejorar</button>
+<div style:--depth={depth} class="grid grid-cols-12 items-center gap-x-7 border-b border-zinc-800 py-3 text-zinc-400">
+	<span class="heading col-span-5 text-wrap">{encabezado.texto}</span>
+	<span class="col-span-2">4.0</span>
+	<span class="col-span-2">{encabezado.tag}</span>
+	<span class="col-span-1">0</span>
+	<div class="flex justify-end col-span-2">
+		<button class="rounded-md w-1/2 bg-white text-black font-medium py-0.5 px-2">Mejorar</button>
+	</div>
 </div>
+
+<style lang="scss">
+	.heading {
+		display: block;
+		padding-inline: calc(1.25rem * var(--depth));
+	}
+</style>
+
