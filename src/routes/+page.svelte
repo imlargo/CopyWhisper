@@ -1,15 +1,13 @@
 <script lang="ts">
+	const dataState = $state({
+		data: ''
+	});
 
-
-    const dataState = $state({
-        data: ''
-    });
-
-    async function decodeStreamData(stream: ReadableStream, store) {
+	async function decodeStreamData(stream: ReadableStream, store) {
 		const reader = stream.getReader();
 		const decoder = new TextDecoder();
 
-        store.data = '';
+		store.data = '';
 
 		while (true) {
 			const { done, value } = await reader.read();
@@ -17,13 +15,13 @@
 				break;
 			}
 
-            const data = decoder.decode(value, { stream: true });
-            console.log(data);
-			store.data += data;
+			store.data += decoder.decode(value, { stream: true });
 		}
-        store.data += decoder.decode();
-    }
 
+		store.data += decoder.decode();
+
+		reader.releaseLock();
+	}
 
 	async function handleClick() {
 		const prompt = 'Dame una receta de pizza para 4 personas';
@@ -37,7 +35,6 @@
 		});
 
 		await decodeStreamData(response.body, dataState);
-
 	}
 </script>
 
