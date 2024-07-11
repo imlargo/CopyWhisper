@@ -1,4 +1,4 @@
-import type { PageData } from '$lib/types';
+import type { PageData, HeaderTree } from '$lib/types';
 
 class StorePage implements PageData {
 	link = $state('');
@@ -7,7 +7,7 @@ class StorePage implements PageData {
 	encabezados = $state([]);
 	data = $state('');
 	ok = $state(false);
-	tree = $state([]);
+	tree = $state<HeaderTree[]>([]);
 	markdown = $state('');
 	renderedMarkdown = $state('');
 	analizis = $state({
@@ -28,7 +28,7 @@ class StorePage implements PageData {
 		this.renderedMarkdown = pageData.renderedMarkdown;
 	}
 
-	saveRate(rateData: object) {
+	saveRate(rateData: any) {
 		this.analizis = rateData.recomendaciones;
 		this.calificaciones = rateData.calificaciones;
 	}

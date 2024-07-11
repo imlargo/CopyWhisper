@@ -1,4 +1,4 @@
-import type { PageData, Encabezado } from '$lib/types';
+import type { PageData, Encabezado, HeaderTree } from '$lib/types';
 import { convertToMarkdown, convertToHtml } from '$src/lib/utils/markdown-service';
 
 function parseHTML(rawHtml: string): HTMLElement {
@@ -32,8 +32,8 @@ function injectChild(tree, item): void {
 	}
 }
 
-function getTree(encabezados: Encabezado[]) {
-	const tree = [{ encabezado: encabezados[0], hijos: [] }];
+function getTree(encabezados: Encabezado[]): HeaderTree[] {
+	const tree: HeaderTree[] = [{ encabezado: encabezados[0], hijos: [] }];
 
 	for (let i = 1; i < encabezados.length; i++) {
 		const encabezado = encabezados[i];

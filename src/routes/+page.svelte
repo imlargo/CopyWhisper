@@ -93,7 +93,7 @@
 	<div class="grid grid-cols-4 py-12">
 		<div class="col-span-1">
 			{#each storePage.tree as item}
-				<Arbol encabezado={item.encabezado} children={item.children} />
+				<Arbol encabezado={item.encabezado} hijos={item.hijos} />
 			{/each}
 		</div>
 

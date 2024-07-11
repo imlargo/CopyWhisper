@@ -31,3 +31,8 @@ export interface RateResponse {
 	recomendaciones: string;
 	calificaciones: Calificacion[];
 }
+
+export interface HeaderTree {
+	encabezado: Encabezado;
+	hijos: HeaderTree[];
+}
