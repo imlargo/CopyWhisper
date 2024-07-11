@@ -28,7 +28,7 @@ class StorePage implements PageData {
 		this.renderedMarkdown = pageData.renderedMarkdown;
 	}
 
-	saveRate(rateData: Object) {
+	saveRate(rateData: object) {
 		this.analizis = rateData.recomendaciones;
 		this.calificaciones = rateData.calificaciones;
 	}

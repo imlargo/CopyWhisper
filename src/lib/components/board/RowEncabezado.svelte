@@ -1,13 +1,15 @@
 <script lang="ts">
 	import type { Encabezado } from '$lib/types';
+	import Rate from './Rate.svelte';
+	import Placeholder from '$src/lib/components/Placeholder.svelte';
+
 	type Props = {
 		encabezado: Encabezado;
 		rate?: { calificacion: number };
 	};
 	const { encabezado, rate = -1 }: Props = $props();
-	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
 
-	import Rate from './Rate.svelte';
+	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
 </script>
 
 <div
@@ -17,7 +19,7 @@
 	<span class="heading col-span-5 truncate">{encabezado.texto}</span>
 	<span class="col-span-2">
 		{#if rate === -1}
-			Generando...
+			<Placeholder />
 		{:else}
 			<Rate rate={rate.calificacion} />
 		{/if}

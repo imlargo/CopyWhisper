@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade } from "svelte/transition";
+	
 	type Props = {
 		rate: number;
 	};
@@ -9,6 +11,7 @@
 
 <span
 	class="inline-flex h-min items-center rounded-full px-5 py-1 text-xs font-medium ring-1 ring-inset rate-{rateColor}"
+	transition:fade
 >
 	{rate}
 </span>

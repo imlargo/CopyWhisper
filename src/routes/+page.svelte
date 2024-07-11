@@ -1,5 +1,9 @@
 <script>
 	import '$styles/app.scss';
+
+	import { fade } from 'svelte/transition';
+	import { storePage } from '$stores/StorePage.svelte';
+
 	import Nav from '$components/Nav.svelte';
 	import Search from '$components/Search.svelte';
 	import Head from '$src/lib/components/board/Head.svelte';
@@ -8,10 +12,8 @@
 	import Arbol from '$src/lib/components/board/Arbol.svelte';
 	import Markdown from '$src/lib/components/board/Markdown.svelte';
 	import Hero from '$src/lib/components/Hero.svelte';
-
+	import Placeholder from '$src/lib/components/Placeholder.svelte';
 	import ListadoHeaders from '$src/lib/components/board/ListadoHeaders.svelte';
-
-	import { storePage } from '$stores/StorePage.svelte';
 </script>
 
 <header class="page-container">
@@ -28,30 +30,38 @@
 	<Head />
 
 	<div class="grid grid-cols-4 gap-4 py-4">
-		<Stat tipo="Titulos" valor={storePage.encabezados.length || 0} />
+		<Stat tipo="Titulos" valor={storePage.encabezados.length} />
 		<Stat tipo="Calificacion" />
+		<Stat tipo="Redaccion" />
 		<Stat tipo="Ortografia" />
-		<Stat />
 	</div>
 
 	<section class="py-12">
 		<div class="grid grid-cols-2">
 			<div>
 				<h5 class="mb-3">Fortalezas</h5>
-				<ul class="list-disc flex flex-col gap-1 pl-4">
-					{#each storePage.analizis.fortalezas as fortalezas}
-						<li class="text-zinc-400">{fortalezas}</li>
-					{/each}
-				</ul>
+				{#if storePage.analizis.fortalezas.length > 0}
+					<ul transition:fade class="list-disc flex flex-col gap-1 pl-4">
+						{#each storePage.analizis.fortalezas as fortalezas}
+							<li class="text-zinc-400">{fortalezas}</li>
+						{/each}
+					</ul>
+				{:else}
+					<Placeholder h="6" />
+				{/if}
 			</div>
 
 			<div>
 				<h5 class="mb-3">Debilidades</h5>
-				<ul class="list-disc pl-4 flex flex-col gap-1">
-					{#each storePage.analizis.debilidades as debilidades}
-						<li class="text-zinc-400">{debilidades}</li>
-					{/each}
-				</ul>
+				{#if storePage.analizis.debilidades.length > 0}
+					<ul transition:fade class="list-disc pl-4 flex flex-col gap-1">
+						{#each storePage.analizis.debilidades as debilidades}
+							<li class="text-zinc-400">{debilidades}</li>
+						{/each}
+					</ul>
+				{:else}
+					<Placeholder h="6" />
+				{/if}
 			</div>
 		</div>
 	</section>
