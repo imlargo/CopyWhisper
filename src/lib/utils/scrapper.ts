@@ -1,9 +1,10 @@
 import type { PageData, Encabezado } from '$lib/types';
 import { convertToMarkdown, convertToHtml } from '$src/lib/utils/markdown-service';
 
-function parseHTML(rawHtml: string) {
+function parseHTML(rawHtml: string): HTMLElement {
 	const element = document.createElement('html');
 	element.innerHTML = rawHtml;
+
 	return element;
 }
 
@@ -48,10 +49,13 @@ function clearDOM(htmlElement: HTMLElement) {
 
 	deleteItem(htmlElement, 'script');
 	deleteItem(htmlElement, 'style');
+	deleteItem(htmlElement, 'img');
 	deleteItem(htmlElement, 'link');
 	deleteItem(htmlElement, 'noscript');
 	deleteItem(htmlElement, 'iframe');
 	deleteItem(htmlElement, 'svg');
+	deleteItem(htmlElement, 'a');
+	deleteItem(htmlElement, 'nav');
 
 	return htmlElement;
 }

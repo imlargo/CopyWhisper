@@ -13,7 +13,7 @@ const turndownService = new TurndownService({
 });
 
 export function convertToMarkdown(body: HTMLElement): string {
-	return turndownService.turndown(body).trim().replace(/\s+/g, ' ');
+	return turndownService.turndown(body).trim();
 }
 
 export function convertToHtml(markdown: string): string {
