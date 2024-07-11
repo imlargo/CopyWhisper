@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getPage } from '$lib/utils/scrapper';
 	import { storePage } from '$stores/StorePage.svelte';
-	import type { RateRequest } from '../types';
+	import type { RateRequest, Rate } from '../types';
 
 	async function handleSubmit() {
 		// Obtener el link ingresado por el usuario
@@ -41,10 +41,10 @@
 			body: JSON.stringify(rateRequest)
 		});
 
-		const rateData = await response.json();
+		const rate: Rate = await response.json();
 
 		// Guardar la calificación en el store
-		storePage.saveRate(rateData);
+		storePage.setRate(rate);
 	}
 </script>
 

@@ -1,53 +1,30 @@
-import type { PageData, HeaderTree } from '$lib/types';
+import type { PageData, Rate } from '$lib/types';
 
-class StorePage {
-	link = $state('');
-	titulo = $state('');
-	descripcion = $state('');
-	encabezados = $state([]);
-	data = $state('');
-	ok = $state(false);
-	tree = $state<HeaderTree[]>([]);
-	markdown = $state('');
-	renderedMarkdown = $state('');
-	analizis = $state({
-		fortalezas: [],
-		debilidades: []
-	});
-	calificaciones = $state([]);
+interface StorePage {
+	data: PageData | null;
+	rate: Rate | null;
+	ok: boolean;
+}
 
-	resumen = $state('');
-	total = $state(-1);
-	errores = $state([]);
+class StorePage implements StorePage {
+	data: PageData | null = $state(null);
+	rate: Rate | null = $state(null);
+	ok: boolean = $state(false);
 
 	/*
 	 inicializar la store con los datos base de la pagina
 	 */
 	init(pageData: PageData) {
 		this.ok = true;
-		this.link = pageData.link;
-		this.titulo = pageData.titulo;
-		this.descripcion = pageData.descripcion;
-		this.encabezados = pageData.encabezados;
-		this.data = pageData.data;
-		this.tree = pageData.tree;
-		this.markdown = pageData.markdown;
-		this.renderedMarkdown = pageData.renderedMarkdown;
+		this.data = pageData;
 	}
 
 	/*
 	 guardar la calificación de la página
 	 */
-
-	saveRate(rateData: any) {
-		console.log(rateData);
-
-		this.resumen = rateData.resumen;
-		this.total = rateData.total;
-		this.errores = rateData.errores;
-
-		this.analizis = rateData.recomendaciones;
-		this.calificaciones = rateData.calificaciones;
+	setRate(rate: Rate) {
+		console.log(rate);
+		this.rate = rate;
 	}
 }
 

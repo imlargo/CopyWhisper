@@ -1,6 +1,5 @@
 import type { PageData, Encabezado, HeaderTree } from '$lib/types';
 import { convertToMarkdown, convertToHtml } from '$src/lib/utils/markdown-service';
-import { PAGE_DATA } from '$src/lib/utils/enums';
 
 /*
  * Convertir el html a un elemento del DOM
@@ -21,7 +20,7 @@ function getEncabezados(dom: HTMLElement): Encabezado[] {
 	return Array.from(headers).map((header) => {
 		return {
 			tag: header.tagName,
-			texto: header.textContent
+			texto: header.textContent || 'Error: sin texto'
 		};
 	});
 }
@@ -29,7 +28,7 @@ function getEncabezados(dom: HTMLElement): Encabezado[] {
 /*
  * Inyectar un elemento en el arbol de encabezados
  */
-function injectChild(tree, item): void {
+function injectChild(tree: HeaderTree[], item: HeaderTree): void {
 	const lastItem = tree.at(-1);
 
 	if (
@@ -92,10 +91,9 @@ export async function getPage(link: string) {
 
 		const dom = clearDOM(parseHTML(rawHtml));
 
-		const titulo = dom.querySelector('title')?.textContent;
+		const titulo = dom.querySelector('title')?.textContent || '';
 		const descripcion =
-			dom.querySelector('meta[name="description"]')?.getAttribute('content') ||
-			PAGE_DATA.NO_DESCRIPTION;
+			dom.querySelector('meta[name="description"]')?.getAttribute('content') || '';
 		const encabezados = getEncabezados(dom);
 		const tree = getTree(encabezados);
 		const markdown = convertToMarkdown(dom.querySelector('body') as HTMLElement);
@@ -116,7 +114,6 @@ export async function getPage(link: string) {
 		return data;
 	} catch (error) {
 		console.log(error);
-
 		return null;
 	}
 }

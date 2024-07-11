@@ -5,8 +5,8 @@ export interface Encabezado {
 
 export interface PageData {
 	link: string;
-	titulo: string | null;
-	descripcion: string | null;
+	titulo: string;
+	descripcion: string;
 	encabezados: Encabezado[];
 	data: string;
 	tree: any[];
@@ -22,16 +22,21 @@ export interface RateRequest {
 	encabezados: any[];
 }
 
-interface Calificacion {
+export interface Calificacion {
 	encabezado: string;
 	calificacion: number;
 }
 
-export interface RateResponse {
+interface Recomendacion {
+	fortalezas: string[];
+	debilidades: string[];
+}
+
+export interface Rate {
 	resumen: string;
 	total: number;
 	errores: string[];
-	recomendaciones: string;
+	recomendaciones: Recomendacion;
 	calificaciones: Calificacion[];
 }
 

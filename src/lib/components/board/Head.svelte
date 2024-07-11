@@ -2,7 +2,6 @@
 	import { storePage } from '$stores/StorePage.svelte';
 	import Badge from './Badge.svelte';
 	import Placeholder from '../Placeholder.svelte';
-	import { PAGE_DATA } from '$src/lib/utils/enums';
 </script>
 
 <div class="border-t border-zinc-800 py-5">
@@ -11,28 +10,28 @@
 			<span class="ring-4 h-2 w-2 rounded-full {storePage.ok ? 'ok' : 'notok'}"></span>
 
 			<div class="flex gap-4">
-				<span>{storePage.link}</span>
+				<span>{storePage.data ? storePage.data.link : ''}</span>
 				<span class="text-zinc-700">/</span>
-				<span>{storePage.titulo}</span>
+				<span>{storePage.data ? storePage.data.titulo : ''}</span>
 			</div>
 		</div>
 
-		{#if storePage.total === -1}
+		{#if storePage.rate === null}
 			<Placeholder />
 		{:else}
 			<Badge color="green">
-				{storePage.total}
+				{storePage.rate.total}
 			</Badge>
 		{/if}
 	</div>
 
 	<span class="inline-flex w-6/12 text-pretty mt-6 text-zinc-400">
-		{#if storePage.descripcion === PAGE_DATA.NO_DESCRIPTION}
-			Ups no se encontró descripción
-		{:else if storePage.descripcion === ''}
+		{#if storePage.data === null}
 			<Placeholder />
+		{:else if storePage.data.descripcion === ''}
+			Ups no se encontró descripción
 		{:else}
-			{storePage.descripcion}
+			{storePage.data.descripcion}
 		{/if}
 	</span>
 </div>

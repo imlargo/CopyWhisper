@@ -30,9 +30,9 @@
 	<Head />
 
 	<div class="grid grid-cols-3 gap-4 pt-4">
-		<Stat tipo="Titulos" valor={storePage.encabezados.length} />
-		<Stat tipo="Calificacion" valor={storePage.total} />
-		<Stat tipo="Redaccion" valor={storePage.errores.length} />
+		<Stat tipo="Titulos" valor={storePage.data ? storePage.data.encabezados.length : null} />
+		<Stat tipo="Calificacion" valor={storePage.rate ? storePage.rate.total : null} />
+		<Stat tipo="Redaccion" valor={storePage.rate ? storePage.rate.errores.length : null} />
 	</div>
 
 	<hr class="my-12 opacity-10" />
@@ -41,10 +41,10 @@
 		<div class="grid grid-cols-2">
 			<div>
 				<h5 class="mb-3">Fortalezas</h5>
-				{#if storePage.analizis.fortalezas.length > 0}
+				{#if storePage.rate !== null}
 					<ul transition:fade class="list-disc flex flex-col gap-1 pl-4">
-						{#each storePage.analizis.fortalezas as fortalezas}
-							<li class="text-zinc-400">{fortalezas}</li>
+						{#each storePage.rate.recomendaciones.fortalezas as fortaleza}
+							<li class="text-zinc-400">{fortaleza}</li>
 						{/each}
 					</ul>
 				{:else}
@@ -54,10 +54,10 @@
 
 			<div>
 				<h5 class="mb-3">Debilidades</h5>
-				{#if storePage.analizis.debilidades.length > 0}
+				{#if storePage.rate !== null}
 					<ul transition:fade class="list-disc pl-4 flex flex-col gap-1">
-						{#each storePage.analizis.debilidades as debilidades}
-							<li class="text-zinc-400">{debilidades}</li>
+						{#each storePage.rate.recomendaciones.debilidades as debilidad}
+							<li class="text-zinc-400">{debilidad}</li>
 						{/each}
 					</ul>
 				{:else}
@@ -83,9 +83,14 @@
 		</div>
 
 		<div class="encabezados grid flex-col">
-			{#each storePage.encabezados as encabezado, i}
-				<RowEncabezado {encabezado} rate={storePage.calificaciones[i]} />
-			{/each}
+			{#if storePage.data !== null}
+				{#each storePage.data.encabezados as encabezado, i}
+					<RowEncabezado
+						{encabezado}
+						calificacion={storePage.rate ? storePage.rate.calificaciones[i] : null}
+					/>
+				{/each}
+			{/if}
 		</div>
 	</section>
 
@@ -93,13 +98,17 @@
 
 	<div class="grid grid-cols-4 py-12">
 		<div class="col-span-1">
-			{#each storePage.tree as item}
-				<Arbol encabezado={item.encabezado} hijos={item.hijos} />
-			{/each}
+			{#if storePage.data !== null}
+				{#each storePage.data.tree as item}
+					<Arbol encabezado={item.encabezado} hijos={item.hijos} />
+				{/each}
+			{/if}
 		</div>
 
 		<div class="col-span-3">
-			<Markdown html={storePage.renderedMarkdown} />
+			{#if storePage.data !== null}
+				<Markdown html={storePage.data.renderedMarkdown} />
+			{/if}
 		</div>
 	</div>
 </main>

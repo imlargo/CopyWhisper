@@ -8,9 +8,9 @@
 <div class="flex gap-4">
 	{#each headers as header}
 		<span
-			class:text-zinc-500={!storePage.encabezados.some(
-				(encabezado: Encabezado) => encabezado.tag === header
-			)}>{header}</span
+			class:text-zinc-500={storePage.data
+				? !storePage.data.encabezados.some((encabezado: Encabezado) => encabezado.tag === header)
+				: true}>{header}</span
 		>
 	{/each}
 </div>
