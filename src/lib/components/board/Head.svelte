@@ -1,5 +1,8 @@
 <script>
 	import { storePage } from '$stores/StorePage.svelte';
+	import Badge from './Badge.svelte';
+	import Placeholder from '../Placeholder.svelte';
+	import { PAGE_DATA } from '$src/lib/utils/enums';
 </script>
 
 <div class="border-t border-zinc-800 py-5">
@@ -14,15 +17,20 @@
 			</div>
 		</div>
 
-		<span
-			class="inline-flex h-min items-center rounded-md bg-purple-700/10 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/60"
-			>Badge</span
-		>
+		{#if storePage.total === -1}
+			<Placeholder />
+		{:else}
+			<Badge color="green">
+				{storePage.total}
+			</Badge>
+		{/if}
 	</div>
 
 	<span class="inline-flex w-6/12 text-pretty mt-6 text-zinc-400">
-		{#if storePage.descripcion === ''}
-			Ups! No hay descripción disponible
+		{#if storePage.descripcion === PAGE_DATA.NO_DESCRIPTION}
+			Ups no se encontró descripción
+		{:else if storePage.descripcion === ''}
+			<Placeholder />
 		{:else}
 			{storePage.descripcion}
 		{/if}

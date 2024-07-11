@@ -1,13 +1,19 @@
 <script lang="ts">
 	import type { Encabezado } from '$lib/types';
-	import Rate from './Rate.svelte';
 	import Placeholder from '$src/lib/components/Placeholder.svelte';
+
+	import Badge from './Badge.svelte';
 
 	type Props = {
 		encabezado: Encabezado;
 		rate?: { calificacion: number };
 	};
-	const { encabezado, rate = -1 }: Props = $props();
+	const {
+		encabezado,
+		rate = {
+			calificacion: -1
+		}
+	}: Props = $props();
 
 	// Calcular profundidad del nodo en el árbol para aplicar padding
 	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
@@ -19,10 +25,20 @@
 >
 	<span class="heading col-span-5 truncate">{encabezado.texto}</span>
 	<span class="col-span-2">
-		{#if rate === -1}
+		{#if rate.calificacion === -1}
 			<Placeholder />
 		{:else}
-			<Rate rate={rate.calificacion} />
+			<Badge
+				color={rate.calificacion < 3
+					? 'red'
+					: rate.calificacion < 7
+						? 'yellow'
+						: rate.calificacion === 10
+							? 'purple'
+							: 'green'}
+			>
+				{rate.calificacion}
+			</Badge>
 		{/if}
 	</span>
 	<span class="col-span-2">{encabezado.tag}</span>

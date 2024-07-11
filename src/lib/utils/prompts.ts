@@ -15,14 +15,17 @@ Eres un copywriter experto con muchos conocimientos en el área de la redacción
 - Debes proporcionar una respuesta en el siguiente formato JSON, recuerda incluir los curly braces:
 \`\`\`json
 	{
-		"descripcion": "Descripción general de lo que entendiste de el contexto de la pagina web.",
-		"calificacion": "Calificación general de la página web teniendo en el contenido desde un punto de vista de copywritting. La calificación debe ser un número entre 0 y 10.",
+		"resumen": "Descripción general de lo que entendiste de el contexto de la pagina web.",
+		"total": "Calificación general de la página web teniendo en el contenido desde un punto de vista de copywritting. La calificación debe ser un número entre 0 y 10.",
+		"errores": [
+			"Errores ortograficos, de gramatica o de redaccion en el contenido de la página."
+		],
 		"recomendaciones": {
 			"fortalezas": [
 				"Fortalezas generales del contenido de la página."
 			],
 			"debilidades": [
-				"Debilidades generales del contenido de la página."],
+				"Debilidades o errores generales del contenido de la página."],
 			},
 		"calificaciones": [
 		  {

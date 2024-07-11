@@ -1,6 +1,6 @@
 import type { PageData, HeaderTree } from '$lib/types';
 
-class StorePage implements PageData {
+class StorePage {
 	link = $state('');
 	titulo = $state('');
 	descripcion = $state('');
@@ -15,6 +15,10 @@ class StorePage implements PageData {
 		debilidades: []
 	});
 	calificaciones = $state([]);
+
+	resumen = $state('');
+	total = $state(-1);
+	errores = $state([]);
 
 	/*
 	 inicializar la store con los datos base de la pagina
@@ -36,6 +40,12 @@ class StorePage implements PageData {
 	 */
 
 	saveRate(rateData: any) {
+		console.log(rateData);
+
+		this.resumen = rateData.resumen;
+		this.total = rateData.total;
+		this.errores = rateData.errores;
+
 		this.analizis = rateData.recomendaciones;
 		this.calificaciones = rateData.calificaciones;
 	}

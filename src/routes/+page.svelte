@@ -29,14 +29,15 @@
 <main class="page-container py-32">
 	<Head />
 
-	<div class="grid grid-cols-4 gap-4 py-4">
+	<div class="grid grid-cols-3 gap-4 pt-4">
 		<Stat tipo="Titulos" valor={storePage.encabezados.length} />
-		<Stat tipo="Calificacion" />
-		<Stat tipo="Redaccion" />
-		<Stat tipo="Ortografia" />
+		<Stat tipo="Calificacion" valor={storePage.total} />
+		<Stat tipo="Redaccion" valor={storePage.errores.length} />
 	</div>
 
-	<section class="py-12">
+	<hr class="my-12 opacity-10" />
+
+	<section class="">
 		<div class="grid grid-cols-2">
 			<div>
 				<h5 class="mb-3">Fortalezas</h5>

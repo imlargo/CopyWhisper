@@ -28,6 +28,9 @@ interface Calificacion {
 }
 
 export interface RateResponse {
+	resumen: string;
+	total: number;
+	errores: string[];
 	recomendaciones: string;
 	calificaciones: Calificacion[];
 }

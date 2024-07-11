@@ -1,5 +1,6 @@
 import type { PageData, Encabezado, HeaderTree } from '$lib/types';
 import { convertToMarkdown, convertToHtml } from '$src/lib/utils/markdown-service';
+import { PAGE_DATA } from '$src/lib/utils/enums';
 
 /*
  * Convertir el html a un elemento del DOM
@@ -89,13 +90,12 @@ export async function getPage(link: string) {
 			body: JSON.stringify({ link: isFull ? link : `https://${link}` })
 		}).then((res) => res.text());
 
-		console.log(rawHtml);
-
 		const dom = clearDOM(parseHTML(rawHtml));
 
 		const titulo = dom.querySelector('title')?.textContent;
 		const descripcion =
-			dom.querySelector('meta[name="description"]')?.getAttribute('content') || '';
+			dom.querySelector('meta[name="description"]')?.getAttribute('content') ||
+			PAGE_DATA.NO_DESCRIPTION;
 		const encabezados = getEncabezados(dom);
 		const tree = getTree(encabezados);
 		const markdown = convertToMarkdown(dom.querySelector('body') as HTMLElement);
