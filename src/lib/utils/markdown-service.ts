@@ -12,10 +12,16 @@ const turndownService = new TurndownService({
 	linkStyle: 'inlined'
 });
 
+/*
+ * Convertir el cuerpo de la pagina a markdown
+ */
 export function convertToMarkdown(body: HTMLElement): string {
 	return turndownService.turndown(body).trim();
 }
 
+/*
+Convertir el markdown a html para ser renderizado
+*/
 export function convertToHtml(markdown: string): string {
 	return marked.parse(markdown);
 }

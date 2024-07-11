@@ -1,5 +1,5 @@
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
-import { generateText, StreamData, StreamingTextResponse, streamText } from 'ai';
+import { generateText, streamText } from 'ai';
 import { env } from '$env/dynamic/private';
 
 const provider = createGoogleGenerativeAI({
@@ -8,7 +8,10 @@ const provider = createGoogleGenerativeAI({
 
 const model = provider('models/gemini-pro');
 
-export async function generateTextResponse(prompt: string) {
+/*
+ * Generar respuesta en base a un prompt y devolverla como un string
+ */
+export async function generateTextResponse(prompt: string): Promise<string> {
 	const { text } = await generateText({
 		model: model,
 		prompt: prompt
@@ -16,7 +19,9 @@ export async function generateTextResponse(prompt: string) {
 
 	return text;
 }
-
+/*
+ * Generar respuesta en base a un prompt y devolverla como un ReadableStream
+ */
 export async function generateStreamResponse(prompt: string) {
 	const result = await streamText({
 		model: model,

@@ -1,6 +1,9 @@
 import type { PageData, Encabezado, HeaderTree } from '$lib/types';
 import { convertToMarkdown, convertToHtml } from '$src/lib/utils/markdown-service';
 
+/*
+ * Convertir el html a un elemento del DOM
+ */
 function parseHTML(rawHtml: string): HTMLElement {
 	const element = document.createElement('html');
 	element.innerHTML = rawHtml;
@@ -8,6 +11,9 @@ function parseHTML(rawHtml: string): HTMLElement {
 	return element;
 }
 
+/*
+ * Obtener los encabezados de la pagina
+ */
 function getEncabezados(dom: HTMLElement): Encabezado[] {
 	const headers = dom.querySelectorAll('h1, h2, h3, h4, h5, h6');
 
@@ -19,6 +25,9 @@ function getEncabezados(dom: HTMLElement): Encabezado[] {
 	});
 }
 
+/*
+ * Inyectar un elemento en el arbol de encabezados
+ */
 function injectChild(tree, item): void {
 	const lastItem = tree.at(-1);
 
@@ -32,6 +41,10 @@ function injectChild(tree, item): void {
 	}
 }
 
+/*
+ * Genera un arbol jerarquico de encabezados segun su tag
+ */
+
 function getTree(encabezados: Encabezado[]): HeaderTree[] {
 	const tree: HeaderTree[] = [{ encabezado: encabezados[0], hijos: [] }];
 
@@ -43,6 +56,9 @@ function getTree(encabezados: Encabezado[]): HeaderTree[] {
 	return tree;
 }
 
+/*
+ * Limpiar el DOM de elementos no deseados para que sea convertido a markdown
+ */
 function clearDOM(htmlElement: HTMLElement) {
 	const deleteItem = (element: HTMLElement, selector: string) =>
 		element.querySelectorAll(selector).forEach((s) => s.remove());
@@ -64,6 +80,7 @@ export async function getPage(link: string) {
 	const isFull = link.startsWith('http://') || link.startsWith('https://');
 
 	try {
+		// Obtener el html de la pagina como texto
 		const rawHtml = await fetch('/api/urlService', {
 			method: 'POST',
 			headers: {
@@ -75,8 +92,6 @@ export async function getPage(link: string) {
 		console.log(rawHtml);
 
 		const dom = clearDOM(parseHTML(rawHtml));
-
-		console.log(dom);
 
 		const titulo = dom.querySelector('title')?.textContent;
 		const descripcion =

@@ -1,5 +1,8 @@
 import type { RateRequest } from '$src/lib/types';
 
+/*
+ * Plantilas de prompts para generar respuestas de la IA
+ */
 export const prompts = {
 	CALIFICAR_TITULOS(rateRequest: RateRequest) {
 		// "comentarios": "Comentarios específicos sobre el encabezado, indicando las razones de la calificación y sugerencias para mejorarlo. No es necesario que repitas el encabezado."
@@ -49,15 +52,15 @@ ${rateRequest.markdown}
 	},
 
 	CALIFICAR_CONTENIDO(rateRequest: RateRequest) {
-		return `Calificar contenido de ${1}`;
+		return `${rateRequest}`;
 	},
 	MEJORAR_TITULO(rateRequest: RateRequest) {
-		return `Calificar contenido de ${1}`;
+		return `${rateRequest}`;
 	},
 	MEJORAR_CONTENIDO(rateRequest: RateRequest) {
-		return `Calificar contenido de ${1}`;
+		return `${rateRequest}`;
 	},
 	CONTEXTUALIZAR(rateRequest: RateRequest) {
-		return `Calificar contenido de ${1}`;
+		return `${rateRequest}`;
 	}
 };

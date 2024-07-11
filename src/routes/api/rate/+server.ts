@@ -4,8 +4,10 @@ import { prompts } from '$src/lib/utils/prompts';
 import { generateTextResponse } from '$server/IA';
 
 export async function POST({ request }) {
+	// Obtener los datos de la pagina
 	const requestData: RateRequest = await request.json();
 
+	// Generar prompt con respecto a los datos de la pagina
 	const prompt = prompts.CALIFICAR_TITULOS(requestData);
 
 	const result = await generateTextResponse(prompt);

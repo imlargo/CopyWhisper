@@ -9,6 +9,7 @@
 	};
 	const { encabezado, rate = -1 }: Props = $props();
 
+	// Calcular profundidad del nodo en el árbol para aplicar padding
 	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
 </script>
 

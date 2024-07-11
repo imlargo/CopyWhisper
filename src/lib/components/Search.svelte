@@ -4,16 +4,24 @@
 	import type { RateRequest } from '../types';
 
 	async function handleSubmit() {
+		// Obtener el link ingresado por el usuario
 		const link = document.querySelector('input')?.value;
 
+		if (!link) {
+			return;
+		}
+
+		// Obtener la información de la página
 		const pageData = await getPage(link as string);
 
+		// En caso de error al obtener la información de la página se notifica al usuario
 		if (pageData === null) {
 			console.log('error');
 			storePage.ok = false;
 			return;
 		}
 
+		// Inicializar el store con la información base de la página
 		storePage.init(pageData);
 
 		const rateRequest: RateRequest = {
@@ -24,6 +32,7 @@
 			encabezados: pageData.encabezados.map((encabezado, i) => ({ id: i + 1, ...encabezado }))
 		};
 
+		// Enviar la información de la página al servidor para obtener la calificación
 		const response = await fetch('/api/rate', {
 			method: 'POST',
 			headers: {
@@ -34,6 +43,7 @@
 
 		const rateData = await response.json();
 
+		// Guardar la calificación en el store
 		storePage.saveRate(rateData);
 	}
 </script>

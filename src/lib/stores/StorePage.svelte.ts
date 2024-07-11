@@ -16,6 +16,9 @@ class StorePage implements PageData {
 	});
 	calificaciones = $state([]);
 
+	/*
+	 inicializar la store con los datos base de la pagina
+	 */
 	init(pageData: PageData) {
 		this.ok = true;
 		this.link = pageData.link;
@@ -27,6 +30,10 @@ class StorePage implements PageData {
 		this.markdown = pageData.markdown;
 		this.renderedMarkdown = pageData.renderedMarkdown;
 	}
+
+	/*
+	 guardar la calificación de la página
+	 */
 
 	saveRate(rateData: any) {
 		this.analizis = rateData.recomendaciones;
