@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { getPage } from '$lib/utils/scrapper';
 	import { storePage } from '$stores/StorePage.svelte';
-	import { error } from '@sveltejs/kit';
+	import type { RateRequest } from '../types';
 
 	async function handleSubmit() {
 		const link = document.querySelector('input')?.value;
@@ -14,9 +14,27 @@
 			return;
 		}
 
-		console.log(pageData);
-
 		storePage.init(pageData);
+
+		const rateRequest: RateRequest = {
+			link: pageData.link,
+			titulo: pageData.titulo,
+			descripcion: pageData.descripcion,
+			markdown: pageData.markdown,
+			encabezados: pageData.encabezados.map((encabezado, i) => ({ id: i + 1, ...encabezado }))
+		};
+
+		const response = await fetch('/api/rate', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(rateRequest)
+		});
+
+		const rateData = await response.json();
+
+		storePage.saveRate(rateData);
 	}
 </script>
 

@@ -1,15 +1,22 @@
-<script>
-	const { encabezado, children } = $props();
+<script lang="ts">
+	import type { Encabezado } from '$lib/types';
+
+	type Props = {
+		encabezado: Encabezado;
+		hijos: Props[];
+	};
+
+	const { encabezado, hijos }: Props = $props();
 	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
 </script>
 
 <ul>
 	<li>
-		<a href="/" class="py-1.5" style:--depth={depth}>{encabezado.texto}</a>
+		<a href="/" class="py-1.5" style:--depth={depth}>{encabezado.tag} - {encabezado.texto}</a>
 
-		{#if children.length > 0}
-			{#each children as hijo}
-				<svelte:self encabezado={hijo.encabezado} children={hijo.children} />
+		{#if hijos.length > 0}
+			{#each hijos as hijo}
+				<svelte:self encabezado={hijo.encabezado} hijos={hijo.hijos} />
 			{/each}
 		{/if}
 	</li>

@@ -10,6 +10,11 @@ class StorePage implements PageData {
 	tree = $state([]);
 	markdown = $state('');
 	renderedMarkdown = $state('');
+	analizis = $state({
+		fortalezas: [],
+		debilidades: []
+	});
+	calificaciones = $state([]);
 
 	init(pageData: PageData) {
 		this.ok = true;
@@ -21,6 +26,11 @@ class StorePage implements PageData {
 		this.tree = pageData.tree;
 		this.markdown = pageData.markdown;
 		this.renderedMarkdown = pageData.renderedMarkdown;
+	}
+
+	saveRate(rateData: Object) {
+		this.analizis = rateData.recomendaciones;
+		this.calificaciones = rateData.calificaciones;
 	}
 }
 

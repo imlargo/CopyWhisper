@@ -1,5 +1,9 @@
-<script>
-	const { tipo = 'Estadistica', valor = 13 } = $props();
+<script lang="ts">
+	type Props = {
+		tipo: string;
+		valor: number;
+	};
+	const { tipo = 'Estadistica', valor = 13 }: Props = $props();
 </script>
 
 <div class="border border-zinc-600 rounded-xl p-7">

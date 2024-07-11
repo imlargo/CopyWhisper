@@ -28,16 +28,16 @@ function injectChild(tree, item): void {
 	) {
 		tree.push(item);
 	} else {
-		return injectChild(lastItem.children, item);
+		return injectChild(lastItem.hijos, item);
 	}
 }
 
 function getTree(encabezados: Encabezado[]) {
-	const tree = [{ encabezado: encabezados[0], children: [] }];
+	const tree = [{ encabezado: encabezados[0], hijos: [] }];
 
 	for (let i = 1; i < encabezados.length; i++) {
 		const encabezado = encabezados[i];
-		injectChild(tree, { encabezado: encabezado, children: [] });
+		injectChild(tree, { encabezado: encabezado, hijos: [] });
 	}
 
 	return tree;
@@ -64,16 +64,26 @@ export async function getPage(link: string) {
 	const isFull = link.startsWith('http://') || link.startsWith('https://');
 
 	try {
-		const response = await fetch(isFull ? link : `https://${link}`);
-		const rawHtml = await response.text();
+		const rawHtml = await fetch('/api/urlService', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ link: isFull ? link : `https://${link}` })
+		}).then((res) => res.text());
+
+		console.log(rawHtml);
+
 		const dom = clearDOM(parseHTML(rawHtml));
 
-		const titulo = dom.querySelector('title').textContent;
+		console.log(dom);
+
+		const titulo = dom.querySelector('title')?.textContent;
 		const descripcion =
 			dom.querySelector('meta[name="description"]')?.getAttribute('content') || '';
 		const encabezados = getEncabezados(dom);
 		const tree = getTree(encabezados);
-		const markdown = convertToMarkdown(dom.querySelector('body'));
+		const markdown = convertToMarkdown(dom.querySelector('body') as HTMLElement);
 		const renderedMarkdown = convertToHtml(markdown);
 
 		const data: PageData = {
@@ -90,6 +100,8 @@ export async function getPage(link: string) {
 
 		return data;
 	} catch (error) {
+		console.log(error);
+
 		return null;
 	}
 }

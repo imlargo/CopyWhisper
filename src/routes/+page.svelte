@@ -35,6 +35,28 @@
 	</div>
 
 	<section class="py-12">
+		<div class="grid grid-cols-2">
+			<div>
+				<h5 class="mb-3">Fortalezas</h5>
+				<ul class="list-disc flex flex-col gap-1 pl-4">
+					{#each storePage.analizis.fortalezas as fortalezas}
+						<li class="text-zinc-400">{fortalezas}</li>
+					{/each}
+				</ul>
+			</div>
+
+			<div>
+				<h5 class="mb-3">Debilidades</h5>
+				<ul class="list-disc pl-4 flex flex-col gap-1">
+					{#each storePage.analizis.debilidades as debilidades}
+						<li class="text-zinc-400">{debilidades}</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-12">
 		<div class="flex justify-between">
 			<h5>Encabezados</h5>
 
@@ -50,8 +72,8 @@
 		</div>
 
 		<div class="encabezados grid flex-col">
-			{#each storePage.encabezados as encabezado}
-				<RowEncabezado {encabezado} />
+			{#each storePage.encabezados as encabezado, i}
+				<RowEncabezado {encabezado} rate={storePage.calificaciones[i]} />
 			{/each}
 		</div>
 	</section>

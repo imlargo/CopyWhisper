@@ -1,6 +1,13 @@
-<script>
-	const { encabezado } = $props();
+<script lang="ts">
+	import type { Encabezado } from '$lib/types';
+	type Props = {
+		encabezado: Encabezado;
+		rate?: { calificacion: number };
+	};
+	const { encabezado, rate = -1 }: Props = $props();
 	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
+
+	import Rate from './Rate.svelte';
 </script>
 
 <div
@@ -8,7 +15,13 @@
 	class="grid grid-cols-12 items-center gap-x-7 border-b border-zinc-800 py-3 text-zinc-400"
 >
 	<span class="heading col-span-5 truncate">{encabezado.texto}</span>
-	<span class="col-span-2">4.0</span>
+	<span class="col-span-2">
+		{#if rate === -1}
+			Generando...
+		{:else}
+			<Rate rate={rate.calificacion} />
+		{/if}
+	</span>
 	<span class="col-span-2">{encabezado.tag}</span>
 	<span class="col-span-1">0</span>
 	<div class="flex justify-end col-span-2">

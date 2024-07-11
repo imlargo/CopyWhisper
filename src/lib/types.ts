@@ -13,3 +13,21 @@ export interface PageData {
 	markdown: string;
 	renderedMarkdown: string;
 }
+
+export interface RateRequest {
+	link: string;
+	titulo: string;
+	descripcion: string;
+	markdown: string;
+	encabezados: any[];
+}
+
+interface Calificacion {
+	encabezado: string;
+	calificacion: number;
+}
+
+export interface RateResponse {
+	recomendaciones: string;
+	calificaciones: Calificacion[];
+}

@@ -1,5 +1,9 @@
-<script>
-	const { html } = $props();
+<script lang="ts">
+	type Props = {
+		html: string;
+	};
+
+	const { html }: Props = $props();
 </script>
 
 <div class="md" spellcheck="true">
