@@ -1,38 +1,17 @@
-# create-svelte
+# CopyWhisper
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+> Desarrollada para el hackatón de midudev en convenio con Vercel, aunque tengo pensado continuar con su desarrollo mas adelante :p.
 
-## Creating a project
+CopyWhisper es una aplicación web innovadora diseñada para analizar, calificar, optimizar y proporcionar recomendaciones personalizadas sobre el copywriting y el contenido de páginas web. CopyWhisper utiliza GeminiAi a través del Vercel SDK, facilitando el trabajo de revisión de contenido y ayudando a mejorar la calidad del copywriting en línea.
 
-If you're seeing this, you've probably already done this step. Congrats!
+#### Características
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+- Análisis de Copywriting: CopyWhisper revisa automáticamente el contenido de tu página web, identificando áreas de mejora y fortalezas.
+- Calificaciones: Obtén una puntuación detallada de la calidad de tu copywriting, basada en varios criterios establecidos.
+- Optimización: Recibe sugerencias específicas para mejorar el contenido de tu página, ayudándote a maximizar su impacto y efectividad.
+- Recomendaciones Personalizadas: Disfruta de consejos hechos a medida para mejorar el copywriting, adaptados a las necesidades específicas de tu sitio web.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+#### Tecnologías Utilizadas
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- Svelte, Tailwind, CSS, SCSS, Typescript
+- Vercel AI SDK
