@@ -1,9 +1,12 @@
 <script>
 	import '$styles/app.scss';
 
+	import Seo from '$components/Seo.svelte';
 	import Nav from '$components/Nav.svelte';
 	import Footer from '$src/lib/components/Footer.svelte';
 </script>
+
+<Seo />
 
 <header class="page-container">
 	<Nav />
