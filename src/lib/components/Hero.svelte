@@ -4,9 +4,9 @@
 	</h1>
 
 	<p class="mt-7 text-center mx-auto w-7/12 text-pretty text-zinc-400">
-		Mejora el copywriting de tu sitio web con nuestra herramienta impulsada por IA. <br />
-		Analiza, optimiza y recibe recomendaciones personalizadas para simplificar el proceso de creación
-		de contenido para desarrolladores, asegurando páginas web impactantes y de alta calidad.
+		Mejora el copywriting de tu sitio web. Analiza, optimiza y recibe recomendaciones personalizadas
+		para simplificar el proceso de creación de contenido, asegurando páginas web impactantes y de
+		alta calidad.
 	</p>
 </section>
 

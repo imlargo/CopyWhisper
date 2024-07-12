@@ -4,15 +4,12 @@
 	</div>
 
 	<div class="flex basis-1/3 justify-center items-center gap-10">
-		<a href="/">Link</a>
-		<a href="/">Link</a>
+		<a href="/">Home</a>
+		<a href="/app">App</a>
+		<a href="/">About</a>
 	</div>
 
 	<div class="flex basis-1/3 justify-end items-center gap-7">
-		<a href="/">Link</a>
-		<a href="/">Link</a>
-		<a href="/">Link</a>
-
 		<button class="bg-white">Cta</button>
 	</div>
 </nav>

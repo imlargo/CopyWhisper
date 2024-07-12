@@ -7,8 +7,6 @@
 		valor: number | null;
 	};
 	const { tipo, valor }: Props = $props();
-
-	console.log(valor);
 </script>
 
 <div class="border border-zinc-600 rounded-xl px-8 py-8">

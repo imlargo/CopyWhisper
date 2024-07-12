@@ -32,7 +32,7 @@
 	<div class="grid grid-cols-3 gap-4 pt-4">
 		<Stat tipo="Titulos" valor={storePage.data ? storePage.data.encabezados.length : null} />
 		<Stat tipo="Calificacion" valor={storePage.rate ? storePage.rate.total : null} />
-		<Stat tipo="Redaccion" valor={storePage.rate ? storePage.rate.errores.length : null} />
+		<Stat tipo="Errores" valor={storePage.rate ? storePage.rate.errores.length : null} />
 	</div>
 
 	<hr class="my-12 opacity-10" />
