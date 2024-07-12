@@ -1,40 +1,41 @@
 <script>
+	import { fade } from 'svelte/transition';
+
 	import { storePage } from '$stores/StorePage.svelte';
+	import { pageState } from '$utils/enums';
+
 	import Badge from './Badge.svelte';
 	import Placeholder from '../Placeholder.svelte';
 </script>
 
-<div class="border-t border-zinc-800 py-5">
-	<div class="flex justify-between items-center">
-		<div class="flex items-center gap-5">
-			<span class="ring-4 h-2 w-2 rounded-full {storePage.ok ? 'ok' : 'notok'}"></span>
+<section class="flex justify-between items-center border-y border-zinc-800 py-5">
+	<div class="flex items-center gap-5">
+		<span
+			class="ring-4 h-2 w-2 rounded-full {storePage.estado === pageState.OK ||
+			storePage.estado === pageState.ANALIZADO
+				? 'ok'
+				: 'notok'}"
+		></span>
 
-			<div class="flex gap-4">
+		<div class="flex gap-4">
+			{#if storePage.estado === pageState.OK || storePage.estado === pageState.ANALIZADO}
 				<span>{storePage.data ? storePage.data.link : ''}</span>
 				<span class="text-zinc-700">/</span>
 				<span>{storePage.data ? storePage.data.titulo : ''}</span>
-			</div>
+			{:else}
+				<Placeholder />
+			{/if}
 		</div>
-
-		{#if storePage.rate === null}
-			<Placeholder />
-		{:else}
-			<Badge color="green">
-				{storePage.rate.total}
-			</Badge>
-		{/if}
 	</div>
 
-	<span class="inline-flex w-6/12 text-pretty mt-6 text-zinc-400">
-		{#if storePage.data === null}
-			<Placeholder />
-		{:else if storePage.data.descripcion === ''}
-			Ups no se encontró descripción
-		{:else}
-			{storePage.data.descripcion}
-		{/if}
-	</span>
-</div>
+	{#if storePage.rate === null}
+		<Placeholder />
+	{:else}
+		<Badge color="green">
+			{storePage.rate.total}
+		</Badge>
+	{/if}
+</section>
 
 <style lang="scss">
 	.ok {

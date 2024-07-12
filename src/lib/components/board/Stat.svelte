@@ -1,16 +1,28 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import Placeholder from '$src/lib/components/Placeholder.svelte';
+	import tippy from 'tippy.js';
+	import 'tippy.js/dist/tippy.css'; // optional for styling
 
 	type Props = {
 		tipo: string;
 		valor: number | null;
+		tooltip: string;
 	};
-	const { tipo, valor }: Props = $props();
+	const { tipo, valor, tooltip }: Props = $props();
+
+	function tooltipAction(element: HTMLElement, tooltip: string) {
+		tippy(element, {
+			content: tooltip
+		});
+	}
 </script>
 
-<div class="border border-zinc-600 rounded-xl px-8 py-8">
-	<h5 class="text-zinc-500">{tipo}</h5>
+<div class="border border-zinc-600 rounded-xl px-7 py-7">
+	<div class="flex justify-between items-start text-zinc-500">
+		<h5>{tipo}</h5>
+		<i use:tooltipAction={tooltip} class="bi bi-info-circle"></i>
+	</div>
 
 	<span class="inline-flex text-4xl font-medium font-mono mt-3">
 		{#if valor === null}

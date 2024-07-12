@@ -66,6 +66,7 @@ function clearDOM(htmlElement: HTMLElement) {
 	deleteItem(htmlElement, 'script');
 	deleteItem(htmlElement, 'style');
 	deleteItem(htmlElement, 'img');
+	deleteItem(htmlElement, 'video');
 	deleteItem(htmlElement, 'link');
 	deleteItem(htmlElement, 'noscript');
 	deleteItem(htmlElement, 'iframe');

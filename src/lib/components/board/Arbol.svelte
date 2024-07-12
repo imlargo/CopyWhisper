@@ -14,7 +14,7 @@
 
 <ul>
 	<li>
-		<a href="/" class="py-1.5" style:--depth={depth}>{encabezado.tag} - {encabezado.texto}</a>
+		<a href="/" class="py-1.5" style:--depth={depth}>{encabezado.texto}</a>
 
 		{#if hijos.length > 0}
 			{#each hijos as hijo}

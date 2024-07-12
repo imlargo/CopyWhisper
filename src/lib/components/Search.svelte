@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { getPage } from '$lib/utils/scrapper';
-	import { storePage } from '$stores/StorePage.svelte';
-	import type { RateRequest, Rate } from '../types';
+	import { goto } from '$app/navigation';
 
 	async function handleSubmit() {
 		// Obtener el link ingresado por el usuario
@@ -11,52 +9,60 @@
 			return;
 		}
 
-		// Obtener la información de la página
-		const pageData = await getPage(link as string);
-
-		// En caso de error al obtener la información de la página se notifica al usuario
-		if (pageData === null) {
-			console.log('error');
-			storePage.ok = false;
-			return;
-		}
-
-		// Inicializar el store con la información base de la página
-		storePage.init(pageData);
-
-		const rateRequest: RateRequest = {
-			link: pageData.link,
-			titulo: pageData.titulo,
-			descripcion: pageData.descripcion,
-			markdown: pageData.markdown,
-			encabezados: pageData.encabezados.map((encabezado, i) => ({ id: i + 1, ...encabezado }))
-		};
-
-		// Enviar la información de la página al servidor para obtener la calificación
-		const response = await fetch('/api/rate', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(rateRequest)
+		const queryParams = new URLSearchParams({
+			link: link
 		});
 
-		const rate: Rate = await response.json();
-
-		// Guardar la calificación en el store
-		storePage.setRate(rate);
+		await goto(`/app?${queryParams.toString()}`);
 	}
 </script>
 
-<div class="flex justify-center py-8 mx-auto">
-	<div class="flex gap-3">
+<div class="flex justify-center mx-auto">
+	<div class="flex gap-3 w-4/12">
 		<input
 			type="text"
-			class="rounded-full py-2 px-6 text-black"
+			class="rounded-full py-3 px-8 text-black w-full shadow-lg shadow-violet-500/20 focus:shadow-violet-500/50"
 			placeholder="Ingresa el link de tu sitio"
 		/>
-		<button onclick={handleSubmit} class="rounded-full font-medium text-black px-6 py-2 bg-white"
-			>Buscar</button
+
+		<button
+			onclick={handleSubmit}
+			class="rounded-full font-medium aspect-square h-full w-auto border border-white/20 text-white bg-white/5 hover:bg-white/10"
 		>
+			<i class="bi bi-arrow-right"></i>
+		</button>
 	</div>
 </div>
+
+<style lang="scss">
+	input {
+		outline: none;
+		transition: all 200ms;
+	}
+
+	button {
+		position: relative;
+		transition: all 200ms;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			z-index: -1;
+			border-radius: 999px;
+			transition: all 200ms;
+		}
+
+		&:active {
+			transform: scale(0.95);
+			color: #000000;
+			&::before {
+				width: 100%;
+				background-color: #ffffff;
+			}
+		}
+	}
+</style>

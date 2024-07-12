@@ -17,6 +17,41 @@ body {
 	color: #fff;
 }
 
+.page-container {
+	@apply mx-auto w-full md:max-w-screen-sm lg:max-w-screen-xl px-5;
+}
+
 .font-mono {
 	font-family: 'JetBrains Mono', monospace !important;
+}
+
+.typing {
+	position: relative;
+
+	&:after {
+		content: '';
+		position: absolute;
+
+		right: -0.5rem;
+		bottom: 1rem;
+
+		width: 0.2rem;
+		height: 60%;
+
+		background-color: rgb(255, 255, 255, 0.7);
+
+		/*
+		animation: blink 1s infinite;
+
+		border-right: rgb(255, 255, 255) 0.2rem solid;
+		
+		*/
+		animation: blink 0.5s step-end infinite alternate;
+	}
+}
+
+@keyframes blink {
+	50% {
+		opacity: 0;
+	}
 }
