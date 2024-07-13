@@ -1,5 +1,6 @@
 <script>
 	import '$styles/app.scss';
+	import 'tippy.js/dist/tippy.css';
 
 	import Seo from '$components/Seo.svelte';
 	import Nav from '$components/Nav.svelte';

@@ -1,102 +1,40 @@
 <script lang="ts">
-	import type { Encabezado, Calificacion, ImproveRequest, ImproveElement } from '$lib/types';
-	import Placeholder from '$src/lib/components/Placeholder.svelte';
-	import { decodeStreamData } from '$utils/readable-stream.svelte';
-	import { storePage } from '$src/lib/stores/StorePage.svelte';
-
-	import Badge from './Badge.svelte';
+	import type { Encabezado, Calificacion } from '$lib/types';
+	import Placeholder from '$components/Placeholder.svelte';
+	import LightRate from './LightRate.svelte';
 
 	type Props = {
 		encabezado: Encabezado;
-		calificacion: Calificacion | null;
+		rate: Calificacion | null;
 	};
-	const { encabezado, calificacion: rate }: Props = $props();
+	const { encabezado, rate }: Props = $props();
 
+	const nivel = parseInt(encabezado.tag.slice(1));
 	// Calcular profundidad del nodo en el árbol para aplicar padding
-	const depth = parseInt(encabezado.tag.slice(1)) === 1 ? 0 : parseInt(encabezado.tag.slice(1)) - 1;
-
-	// Estado para almacenar el encabezado mejorado por la IA
-	let mejorado = $state('');
-
-	async function handleMejora() {
-		if (storePage.data === null) {
-			return;
-		}
-
-		const improveRequest: ImproveRequest = {
-			link: storePage.data.link,
-			titulo: storePage.data.titulo,
-			descripcion: storePage.data.descripcion,
-			markdown: storePage.data.markdown,
-			elemento: encabezado as ImproveElement
-		};
-
-		// Enviar la información de la página al servidor para obtener la calificación
-		const streamResponse = await fetch('/api/improve', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(improveRequest)
-		});
-
-		if (streamResponse.body === null) {
-			return;
-		}
-
-		mejorado = '';
-		await decodeStreamData(streamResponse.body, (data: string) => {
-			mejorado += data;
-		});
-
-		console.log(mejorado);
-	}
+	const depth = nivel === 1 ? 0 : nivel - 1;
 </script>
 
-<div
-	style:--depth={depth}
-	class="grid grid-cols-12 items-center gap-x-7 border-b border-zinc-800 py-3 text-zinc-400"
->
-	<span class="heading col-span-5 truncate">{encabezado.content}</span>
-	<span class="col-span-2">
-		{#if rate === null}
-			<Placeholder />
-		{:else}
-			<Badge
-				color={rate.calificacion < 3
-					? 'red'
-					: rate.calificacion < 7
-						? 'yellow'
-						: rate.calificacion === 10
-							? 'purple'
-							: 'green'}
-			>
-				{rate.calificacion}
-			</Badge>
-		{/if}
-	</span>
-	<span class="col-span-2">{encabezado.tag}</span>
-	<span class="col-span-1">{mejorado}</span>
-	<div class="flex justify-end col-span-2">
-		<button
-			onclick={handleMejora}
-			class="rounded-full w-1/2 bg-white/5 text-white border border-zinc-600 font-medium text-sm py-0.5 px-2"
-			>Mejorar</button
-		>
-	</div>
-</div>
+<span class="header flex items-center gap-2 py-1.5 text-zinc-400" style:--depth={depth}>
+	<i class="bi bi-type-h{nivel} text-zinc-600"></i>
+	<span class="truncate">{encabezado.content}</span>
+	{#if rate === null}
+		<Placeholder />
+	{:else}
+		<LightRate
+			color={rate.calificacion < 3
+				? 'red'
+				: rate.calificacion < 7
+					? 'yellow'
+					: rate.calificacion === 10
+						? 'purple'
+						: 'green'}
+		></LightRate>
+	{/if}
+</span>
 
 <style lang="scss">
-	.heading {
-		display: block;
-		padding-inline: calc(1.5rem * var(--depth));
-	}
-
-	button {
-		transition: all 300ms;
-
-		&:active {
-			transform: scale(0.95);
-		}
+	.header {
+		padding-left: calc(1.25rem * var(--depth));
+		line-height: 1.25;
 	}
 </style>

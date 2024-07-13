@@ -23,7 +23,6 @@ class StorePage {
 		this.rate = rate;
 	}
 
-
 	/*
 	 limpiar la store
 	 */

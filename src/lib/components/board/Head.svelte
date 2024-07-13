@@ -18,7 +18,7 @@
 		<div class="flex gap-4">
 			{#if storePage.estado === pageState.OK || storePage.estado === pageState.ANALIZADO}
 				<span>{storePage.data ? storePage.data.link : ''}</span>
-				<span class="text-zinc-700">/</span>
+				<span class="text-zinc-700 select-none">/</span>
 				<span>{storePage.data ? storePage.data.titulo : ''}</span>
 			{:else}
 				<Placeholder />

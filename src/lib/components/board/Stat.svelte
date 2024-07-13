@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import Placeholder from '$src/lib/components/Placeholder.svelte';
-	import tippy from 'tippy.js';
-	import 'tippy.js/dist/tippy.css'; // optional for styling
+	import { tooltipAction } from '$src/lib/utils/tooltip';
 
 	type Props = {
 		tipo: string;
@@ -10,12 +9,6 @@
 		tooltip: string;
 	};
 	const { tipo, valor, tooltip }: Props = $props();
-
-	function tooltipAction(element: HTMLElement, tooltip: string) {
-		tippy(element, {
-			content: tooltip
-		});
-	}
 </script>
 
 <div class="border border-zinc-600 rounded-xl px-7 py-7">

@@ -7,6 +7,8 @@
 	import type { ImproveRequest } from '$lib/types';
 	import { storePage } from '$stores/StorePage.svelte';
 
+	import { tooltipAction } from '$src/lib/utils/tooltip';
+
 	const { html }: Props = $props();
 
 	function listenSelectableElements(parent: HTMLElement) {
@@ -17,6 +19,8 @@
 		selectableElements.forEach((element) => {
 			const clickableIcon = document.createElement('i');
 			clickableIcon.classList.add('bi', 'bi-pen', 'icon-clickable');
+			tooltipAction(clickableIcon, 'Mejorar contenido');
+
 			element.appendChild(clickableIcon);
 
 			clickableIcon.addEventListener('click', async () => {
@@ -58,6 +62,8 @@
 				});
 
 				element.classList.remove('animate-pulse', 'bg-white/10');
+
+				tooltipAction(clickableIcon, 'Mejorar contenido');
 				element.appendChild(clickableIcon);
 
 				console.log(element.textContent);

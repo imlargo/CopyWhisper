@@ -5,16 +5,14 @@
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 
-	import { fade } from 'svelte/transition';
-
 	import { pageState } from '$utils/enums';
 	import { getPage } from '$lib/utils/scrapper';
 	import { storePage } from '$stores/StorePage.svelte';
 
-	import Placeholder from '$src/lib/components/Placeholder.svelte';
 	import Board from '$src/lib/components/Board.svelte';
 	import Arbol from '$src/lib/components/board/Arbol.svelte';
 	import Markdown from '$src/lib/components/board/Markdown.svelte';
+	import ListadoHeaders from '$src/lib/components/board/ListadoHeaders.svelte';
 
 	import type { RateRequest, Rate } from '$lib/types';
 
@@ -67,12 +65,6 @@
 		// Guardar la calificación en el store
 		storePage.setRate(rate);
 	}
-
-	/*
-	
-
-	 
-	 */
 </script>
 
 <section class="page-container">
@@ -91,44 +83,19 @@
 	<Board />
 </section>
 
-<section class="page-container py-12">
-	<div class="py-4 my-8 border-y border-zinc-800">
+<section class="page-container pb-12">
+	<div class="py-5 mb-8 border-y border-zinc-800 flex justify-between">
 		<h2 class="text-xl font-medium">Contenido</h2>
+
+		<ListadoHeaders />
 	</div>
 
 	<section class="grid grid-cols-12 gap-x-12">
 		<aside class="col-span-4 pe-3">
-			{#if storePage.data !== null}
-				{#each storePage.data.tree as item}
-					<Arbol encabezado={item.encabezado} hijos={item.hijos} />
-				{/each}
-			{/if}
+			<Arbol />
 		</aside>
 
 		<div class="col-span-8">
-			<div>
-				<h2 class="text-xl font-medium">Resumen</h2>
-
-				<h5>Titulo:</h5>
-				{#if storePage.data === null}
-					<Placeholder />
-				{:else}
-					<p class="text-zinc-400" transition:fade>{storePage.data?.titulo}</p>
-				{/if}
-
-				<h5>Descripcion:</h5>
-
-				{#if storePage.rate === null}
-					<Placeholder h="4" />
-				{:else}
-					<p transition:fade class="text-pretty text-zinc-400">
-						{storePage.rate.resumen}
-					</p>
-				{/if}
-			</div>
-
-			<hr class="my-5" />
-
 			{#if storePage.data !== null}
 				<Markdown html={storePage.data.renderedMarkdown} />
 			{/if}
