@@ -15,7 +15,11 @@
 		const selectableElements = parent.querySelectorAll('h1,h2,h3,h4,h5,p,a');
 
 		selectableElements.forEach((element) => {
-			element.addEventListener('click', async () => {
+			const clickableIcon = document.createElement('i');
+			clickableIcon.classList.add('bi', 'bi-pen', 'icon-clickable');
+			element.appendChild(clickableIcon);
+
+			clickableIcon.addEventListener('click', async () => {
 				if (storePage.data === null) {
 					return;
 				}
@@ -54,6 +58,7 @@
 				});
 
 				element.classList.remove('animate-pulse', 'bg-white/10');
+				element.appendChild(clickableIcon);
 
 				console.log(element.textContent);
 			});
@@ -67,15 +72,23 @@
 
 <style lang="scss">
 	.selectable {
-		@apply px-4 py-2 rounded-md;
+		@apply ps-4 pe-6 py-2 rounded-md relative;
 		&:hover {
-			@apply cursor-pointer bg-white/5;
+			@apply bg-white/5;
 		}
 	}
 
 	.md :global(h1) {
 		@apply text-3xl font-bold text-zinc-100;
 		@apply selectable;
+	}
+
+	.md :global(*:hover > .icon-clickable) {
+		@apply opacity-100;
+	}
+
+	.md :global(.icon-clickable) {
+		@apply absolute top-2 right-2 text-sm text-zinc-400 opacity-0 cursor-pointer;
 	}
 
 	.md :global(h2) {

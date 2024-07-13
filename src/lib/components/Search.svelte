@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { storePage } from '$stores/StorePage.svelte';
 
 	async function handleSubmit() {
 		// Obtener el link ingresado por el usuario
@@ -12,6 +13,8 @@
 		const queryParams = new URLSearchParams({
 			link: link
 		});
+
+		storePage.reset();
 
 		await goto(`/app?${queryParams.toString()}`);
 	}

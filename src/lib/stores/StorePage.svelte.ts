@@ -22,6 +22,16 @@ class StorePage {
 		console.log(rate);
 		this.rate = rate;
 	}
+
+
+	/*
+	 limpiar la store
+	 */
+	reset() {
+		this.data = null;
+		this.rate = null;
+		this.estado = pageState.WAITING;
+	}
 }
 
 export const storePage = new StorePage();

@@ -25,6 +25,8 @@
 	}
 
 	async function handle(link: string | null) {
+		storePage.reset();
+
 		// Verificar si se ha ingresado un link
 		if (link === null) {
 			await goto('/');
@@ -94,7 +96,7 @@
 		<h2 class="text-xl font-medium">Contenido</h2>
 	</div>
 
-	<section class="grid grid-cols-12">
+	<section class="grid grid-cols-12 gap-x-12">
 		<aside class="col-span-4 pe-3">
 			{#if storePage.data !== null}
 				{#each storePage.data.tree as item}
