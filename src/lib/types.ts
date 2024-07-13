@@ -1,6 +1,11 @@
 export interface Encabezado {
 	tag: string;
-	texto: string;
+	content: string;
+}
+
+export interface HeaderTree {
+	encabezado: Encabezado;
+	hijos: HeaderTree[];
 }
 
 export interface PageData {
@@ -9,9 +14,15 @@ export interface PageData {
 	descripcion: string;
 	encabezados: Encabezado[];
 	data: string;
-	tree: any[];
+	tree: HeaderTree[];
 	markdown: string;
 	renderedMarkdown: string;
+}
+
+export interface EncabezadoReq extends Encabezado {
+	tag: string;
+	content: string;
+	id: number;
 }
 
 export interface RateRequest {
@@ -19,7 +30,7 @@ export interface RateRequest {
 	titulo: string;
 	descripcion: string;
 	markdown: string;
-	encabezados: any[];
+	encabezados: EncabezadoReq[];
 }
 
 export interface Calificacion {
@@ -40,7 +51,15 @@ export interface Rate {
 	calificaciones: Calificacion[];
 }
 
-export interface HeaderTree {
-	encabezado: Encabezado;
-	hijos: HeaderTree[];
+export interface ImproveElement {
+	content: string;
+	tag: string;
+}
+
+export interface ImproveRequest {
+	link: string;
+	titulo: string;
+	descripcion: string;
+	markdown: string;
+	elemento: ImproveElement;
 }

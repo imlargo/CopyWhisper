@@ -20,7 +20,7 @@ function getEncabezados(dom: HTMLElement): Encabezado[] {
 	return Array.from(headers).map((header) => {
 		return {
 			tag: header.tagName,
-			texto: header.textContent || 'Error: sin texto'
+			content: header.textContent || 'Error: sin texto'
 		};
 	});
 }

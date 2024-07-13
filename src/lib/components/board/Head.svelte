@@ -1,6 +1,4 @@
 <script>
-	import { fade } from 'svelte/transition';
-
 	import { storePage } from '$stores/StorePage.svelte';
 	import { pageState } from '$utils/enums';
 

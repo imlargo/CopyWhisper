@@ -1,13 +1,7 @@
 import type { PageData, Rate } from '$lib/types';
 import { pageState } from '$utils/enums';
 
-interface StorePage {
-	data: PageData | null;
-	rate: Rate | null;
-	estado: number;
-}
-
-class StorePage implements StorePage {
+class StorePage {
 	data: PageData | null = $state(null);
 	rate: Rate | null = $state(null);
 	estado: number = $state(pageState.WAITING);

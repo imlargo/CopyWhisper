@@ -14,16 +14,6 @@
 				tipo="Seo"
 				valor={1}
 			/>
-			
-	<div class="mt-6">
-			{#if storePage.rate === null}
-				<Placeholder h="4" />
-			{:else}
-				<p transition:fade class="w-6/12 text-pretty text-zinc-400">
-					{storePage.rate.resumen}
-				</p>
-			{/if}
-		</div>
 	*/
 </script>
 
