@@ -12,7 +12,7 @@
 </script>
 
 <div class="border border-zinc-600 rounded-xl px-7 py-7">
-	<div class="flex justify-between items-start text-zinc-500">
+	<div class="flex justify-between items-start text-zinc-500 font-mono">
 		<h5>{tipo}</h5>
 		<i use:tooltipAction={tooltip} class="bi bi-info-circle"></i>
 	</div>

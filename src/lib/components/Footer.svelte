@@ -1,4 +1,4 @@
-<hr />
+<hr class="border-t border-violet-300/50" />
 
 <footer class="grid grid-cols-3 py-10 text-sm">
 	<section class="grid items-center col-span-2">

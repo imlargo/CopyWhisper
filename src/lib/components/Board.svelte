@@ -18,7 +18,7 @@
 			<Placeholder h="4" />
 		{:else}
 			<p transition:fade class="text-pretty text-zinc-400 w-12/12">
-				<i use:tooltipAction={'Resumen generado con IA'} class="bi bi-stars"></i>
+				<i use:tooltipAction={'Resumen generado con IA'} class="bi bi-stars text-violet-400"></i>
 				{storePage.rate.resumen}
 			</p>
 		{/if}

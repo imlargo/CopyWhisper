@@ -5,7 +5,7 @@
 	const headers = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
 </script>
 
-<div class="flex gap-4">
+<div class="flex gap-4 font-mono">
 	{#each headers as header}
 		<span
 			class:text-zinc-500={storePage.data

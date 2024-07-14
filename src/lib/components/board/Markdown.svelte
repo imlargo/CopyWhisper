@@ -12,13 +12,14 @@
 	const { html }: Props = $props();
 
 	function listenSelectableElements(parent: HTMLElement) {
-		const generatingIcon = '<i class="bi bi-pen"></i> ';
-		const doneIcon = '<i class="bi bi-stars"></i> ';
+		const generatingIcon = '<i class="bi bi-pen text-violet-400"></i> ';
+		const doneIcon = '<i class="bi bi-stars text-violet-400"></i> ';
 		const selectableElements = parent.querySelectorAll('h1,h2,h3,h4,h5,p,a');
 
 		selectableElements.forEach((element) => {
 			const clickableIcon = document.createElement('i');
-			clickableIcon.classList.add('bi', 'bi-pen', 'icon-clickable');
+			clickableIcon.className = 'icon-clickable bi bi-pen';
+
 			tooltipAction(clickableIcon, 'Mejorar contenido');
 
 			element.appendChild(clickableIcon);
@@ -94,7 +95,7 @@
 	}
 
 	.md :global(.icon-clickable) {
-		@apply absolute top-2 right-2 text-sm text-zinc-400 opacity-0 cursor-pointer;
+		@apply absolute top-2 right-2 text-sm text-violet-400 opacity-0 cursor-pointer;
 	}
 
 	.md :global(h2) {

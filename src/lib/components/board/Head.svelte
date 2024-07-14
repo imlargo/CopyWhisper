@@ -15,7 +15,7 @@
 				: 'notok'}"
 		></span>
 
-		<div class="flex gap-4">
+		<div class="flex gap-4 font-mono">
 			{#if storePage.estado === pageState.OK || storePage.estado === pageState.ANALIZADO}
 				<span>{storePage.data ? storePage.data.link : ''}</span>
 				<span class="text-zinc-700 select-none">/</span>

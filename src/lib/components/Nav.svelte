@@ -1,6 +1,6 @@
 <nav class="flex py-5 justify-between items-center">
 	<div class="flex basis-1/3 align-center">
-		<a class="text-2xl select-none" href="/">
+		<a class="text-2xl select-none font-mono" href="/">
 			<i class="bi bi-pen"></i>
 			<span>CopyWhisper</span>
 		</a>
@@ -16,7 +16,9 @@
 	</div>
 
 	<div class="flex basis-1/3 justify-end items-center gap-7">
-		<button class="bg-white px-5 py-1 rounded-full text-black font-medium">Sign Up</button>
+		<button class="bg-violet-600 px-5 py-1 rounded-full text-white font-medium font-mono"
+			>Sign Up</button
+		>
 	</div>
 </nav>
 

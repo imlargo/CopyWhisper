@@ -9,7 +9,7 @@
 </script>
 
 <span
-	class="inline-flex h-min items-center rounded-full px-5 py-1 text-xs font-medium ring-1 ring-inset badge-{color}"
+	class="inline-flex h-min items-center rounded-full px-5 py-1 text-xs font-medium ring-1 ring-inset font-mono badge-{color}"
 	transition:fade
 >
 	<slot />

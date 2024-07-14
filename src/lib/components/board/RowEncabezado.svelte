@@ -14,7 +14,7 @@
 	const depth = nivel === 1 ? 0 : nivel - 1;
 </script>
 
-<span class="header flex items-center gap-2 py-1.5 text-zinc-400" style:--depth={depth}>
+<span class="header flex items-center gap-2 py-1.5 text-zinc-" style:--depth={depth}>
 	<i class="bi bi-type-h{nivel} text-zinc-600"></i>
 	<span class="truncate">{encabezado.content}</span>
 	{#if rate === null}

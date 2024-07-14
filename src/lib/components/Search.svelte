@@ -2,39 +2,38 @@
 	import { goto } from '$app/navigation';
 	import { storePage } from '$stores/StorePage.svelte';
 
-	async function handleSubmit() {
+	function searchAction(parent: HTMLElement) {
 		// Obtener el link ingresado por el usuario
-		const link = document.querySelector('input')?.value;
+		parent.querySelector('button')?.addEventListener('click', async () => {
+			const link = parent.querySelector('input')?.value;
 
-		if (!link) {
-			return;
-		}
+			if (!link) {
+				return;
+			}
 
-		const queryParams = new URLSearchParams({
-			link: link
+			const queryParams = new URLSearchParams({
+				link: link
+			});
+
+			storePage.reset();
+
+			await goto(`/app?${queryParams.toString()}`);
 		});
-
-		storePage.reset();
-
-		await goto(`/app?${queryParams.toString()}`);
 	}
 </script>
 
-<div class="flex justify-center mx-auto">
-	<div class="flex gap-3 w-4/12">
-		<input
-			type="text"
-			class="rounded-full py-3 px-8 text-black w-full shadow-lg shadow-violet-500/20 focus:shadow-violet-500/50"
-			placeholder="Ingresa el link de tu sitio"
-		/>
+<div use:searchAction class="flex gap-3 w-full">
+	<input
+		type="text"
+		class="rounded-full py-3 px-8 text-black w-full shadow-lg shadow-violet-500/20 focus:shadow-violet-500/50 border border-violet-500/40 font-mono"
+		placeholder="Ingresa el link de tu sitio"
+	/>
 
-		<button
-			onclick={handleSubmit}
-			class="rounded-full font-medium aspect-square h-full w-auto border border-white/20 text-white bg-white/5 hover:bg-white/10"
-		>
-			<i class="bi bi-arrow-right"></i>
-		</button>
-	</div>
+	<button
+		class="rounded-full font-medium aspect-square h-full w-auto border border-violet-500/40 text-white bg-white/5 hover:bg-white/10"
+	>
+		<i class="bi bi-arrow-right"></i>
+	</button>
 </div>
 
 <style lang="scss">
