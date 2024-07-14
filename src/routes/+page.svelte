@@ -91,7 +91,7 @@
 		</div>
 		<div class="mt-16">
 			<Rol
-				rol="Copywritters"
+				rol="Copywriters"
 				descripcion="Ahorra tiempo con nuestras recomendaciones automáticas detalladas y autocompletado."
 				icon="bi bi-feather"
 			/>
