@@ -119,8 +119,9 @@
 	}
 
 	.md :global(ul) {
-		@apply list-disc flex flex-col gap-2 pl-5 text-zinc-400;
+		@apply list-disc flex flex-col gap-2 pl-9 text-zinc-400;
 	}
+
 	.md :global(p) {
 		@apply font-light text-base text-zinc-400;
 		@apply selectable;

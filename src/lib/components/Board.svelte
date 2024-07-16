@@ -14,8 +14,11 @@
 	<Head />
 
 	<div class="pt-4">
-		{#if storePage.data !== null && storePage.data.descripcion === ""}
-			<p class="text-zinc-600 mb-3 w-fit" use:tooltipAction={"La meta description es un breve resumen del contenido de tu página web. Es crucial para mejorar tu visibilidad en los motores de búsqueda y atraer a más visitantes. Deberias añadirla!"}>
+		{#if storePage.data !== null && storePage.data.descripcion === ''}
+			<p
+				class="text-zinc-600 mb-3 w-fit"
+				use:tooltipAction={'La meta description es un breve resumen del contenido de tu página web. Es crucial para mejorar tu visibilidad en los motores de búsqueda y atraer a más visitantes. Deberias añadirla!'}
+			>
 				<i class="bi bi-exclamation-triangle"></i>
 				La página no tiene una meta description!
 			</p>
