@@ -3,9 +3,15 @@
 	import type { Encabezado } from '$src/lib/types';
 
 	const headers = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
+
+	const isOk: boolean = true;
 </script>
 
 <div class="flex gap-4 font-mono">
+	{#if !isOk}
+		<i class="bi bi-exclamation-triangle"></i>
+	{/if}
+
 	{#each headers as header}
 		<span
 			class:text-zinc-500={storePage.data
