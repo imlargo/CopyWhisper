@@ -25,6 +25,16 @@ export interface EncabezadoReq extends Encabezado {
 	id: number;
 }
 
+export interface Prompt {
+	sys: string;
+	prompt: string;
+}
+
+export interface Calificacion {
+	encabezado: string;
+	calificacion: number;
+}
+
 export interface RateRequest {
 	link: string;
 	titulo: string;
@@ -33,17 +43,35 @@ export interface RateRequest {
 	encabezados: EncabezadoReq[];
 }
 
-export interface Calificacion {
-	encabezado: string;
-	calificacion: number;
-}
-
 interface Recomendacion {
 	fortalezas: string[];
 	debilidades: string[];
 }
 
 export interface Rate {
+	errores: {
+		cuantitativo: string;
+		cualitativo: string;
+		comentarios: string;
+		errores: string[];
+	};
+	tono: {
+		cuantitativo: string;
+		cualitativo: string;
+		comentarios: string;
+	};
+	persuacion: {
+		cuantitativo: string;
+		cualitativo: string;
+		comentarios: string;
+	};
+	contenido: {
+		cuantitativo: string;
+		cualitativo: string;
+		comentarios: string;
+	};
+}
+export interface OldRate {
 	resumen: string;
 	total: number;
 	errores: string[];
@@ -62,4 +90,10 @@ export interface ImproveRequest {
 	descripcion: string;
 	markdown: string;
 	elemento: ImproveElement;
+}
+
+export interface summarizeRequest {
+	titulo: string;
+	descripcion: string;
+	markdown: string;
 }

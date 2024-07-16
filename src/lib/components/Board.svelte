@@ -24,65 +24,38 @@
 			</p>
 		{/if}
 
-		{#if storePage.rate === null}
+		{#if storePage.data === null || storePage.resumen === ''}
 			<Placeholder h="4" />
 		{:else}
 			<p transition:fade class="text-pretty text-zinc-400 w-12/12">
 				<i use:tooltipAction={'Resumen generado con IA'} class="bi bi-stars text-violet-400"></i>
-				{storePage.rate.resumen}
+				{storePage.resumen}
 			</p>
 		{/if}
 	</div>
 
 	{#if storePage.estado === pageState.OK || storePage.estado === pageState.ANALIZADO}
-		<section class="grid grid-cols-3 gap-4 py-8">
+		<section class="grid grid-cols-4 gap-4 py-8">
 			<Stat
-				tooltip="Cantidad de encabezados que contiene el contenido de la pagina"
-				tipo="Encabezados"
-				valor={storePage.data ? storePage.data.encabezados.length : null}
+				tooltip="Contenido y redaccion"
+				tipo="Contenido y redaccion"
+				rate={storePage.rate ? storePage.rate.contenido : null}
 			/>
 			<Stat
-				tooltip="Calificacion final asignada despues de analizar la pagina"
-				tipo="Calificacion"
-				valor={storePage.rate ? storePage.rate.total : null}
+				tooltip="Tono y estilo"
+				tipo="Tono y estilo"
+				rate={storePage.rate ? storePage.rate.tono : null}
 			/>
 			<Stat
-				tooltip="Errores de ortografia o gramatica identificados en la pagina"
-				tipo="Errores"
-				valor={storePage.rate ? storePage.rate.errores.length : null}
+				tooltip="Persuasión y Conversión"
+				tipo="Persuasión y Conversión"
+				rate={storePage.rate ? storePage.rate.persuacion : null}
 			/>
-		</section>
-
-		<hr class="opacity-10" />
-
-		<section class="py-8">
-			<div class="grid grid-cols-2 gap-x-8">
-				<div>
-					<h5 class="mb-3">Fortalezas</h5>
-					{#if storePage.rate !== null}
-						<ul transition:fade class="list-disc flex flex-col gap-1 pl-4">
-							{#each storePage.rate.recomendaciones.fortalezas as fortaleza}
-								<li class="text-zinc-400 text-pretty">{fortaleza}</li>
-							{/each}
-						</ul>
-					{:else}
-						<Placeholder h="6" />
-					{/if}
-				</div>
-
-				<div>
-					<h5 class="mb-3">Debilidades</h5>
-					{#if storePage.rate !== null}
-						<ul transition:fade class="list-disc pl-4 flex flex-col gap-1">
-							{#each storePage.rate.recomendaciones.debilidades as debilidad}
-								<li class="text-zinc-400">{debilidad}</li>
-							{/each}
-						</ul>
-					{:else}
-						<Placeholder h="6" />
-					{/if}
-				</div>
-			</div>
+			<Stat
+				tooltip="Gramatica y Ortografia"
+				tipo="Gramatica y Ortografia"
+				rate={storePage.rate ? storePage.rate.errores : null}
+			/>
 		</section>
 	{/if}
 </section>

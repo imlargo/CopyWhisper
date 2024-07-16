@@ -1,7 +1,7 @@
 import type { Encabezado } from '$lib/types';
 
 export function verificarEncabezados(encabezados: Encabezado[]): boolean {
-	let inicial = parseInt(encabezados[0].tag.slice(1));
+	const inicial = parseInt(encabezados[0].tag.slice(1));
 	let anterior = inicial;
 	for (const encabezado of encabezados) {
 		const currNivel = parseInt(encabezado.tag.slice(1));
@@ -13,7 +13,15 @@ export function verificarEncabezados(encabezados: Encabezado[]): boolean {
 		if (anterior - currNivel > 1) {
 			return false;
 		}
+
+		anterior = currNivel;
 	}
 
 	return true;
+}
+
+export function getCodeAsMarkdown(tipo: string, contenido: string): string {
+	return `\`\`\`${tipo}
+${contenido}
+\`\`\``;
 }

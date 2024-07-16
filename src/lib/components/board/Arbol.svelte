@@ -5,6 +5,12 @@
 
 {#if storePage.data !== null}
 	{#each storePage.data.encabezados as encabezado, i}
-		<RowEncabezado {encabezado} rate={storePage.rate ? storePage.rate.calificaciones[i] : null} />
+		<RowEncabezado
+			{encabezado}
+			rate={{
+				calificacion: 10,
+				encabezado: encabezado.content /* storePage.rate ? storePage.rate.calificaciones[i] : null*/
+			}}
+		/>
 	{/each}
 {/if}

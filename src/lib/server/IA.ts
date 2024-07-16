@@ -11,9 +11,10 @@ const model = provider('models/gemini-pro');
 /*
  * Generar respuesta en base a un prompt y devolverla como un string
  */
-export async function generateTextResponse(prompt: string): Promise<string> {
+export async function generateTextResponse(system: string, prompt: string): Promise<string> {
 	const { text } = await generateText({
 		model: model,
+		system: system,
 		prompt: prompt
 	});
 
@@ -22,9 +23,10 @@ export async function generateTextResponse(prompt: string): Promise<string> {
 /*
  * Generar respuesta en base a un prompt y devolverla como un ReadableStream
  */
-export async function generateStreamResponse(prompt: string) {
+export async function generateStreamResponse(system: string, prompt: string) {
 	const result = await streamText({
 		model: model,
+		system: system,
 		prompt: prompt
 	});
 

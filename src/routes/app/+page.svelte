@@ -8,13 +8,14 @@
 	import { pageState } from '$utils/enums';
 	import { getPage } from '$lib/utils/scrapper';
 	import { storePage } from '$stores/StorePage.svelte';
+	import { decodeStreamData } from '$utils/readable-stream.svelte';
 
 	import Board from '$src/lib/components/Board.svelte';
 	import Arbol from '$src/lib/components/board/Arbol.svelte';
 	import Markdown from '$src/lib/components/board/Markdown.svelte';
 	import ListadoHeaders from '$src/lib/components/board/ListadoHeaders.svelte';
 
-	import type { RateRequest, Rate } from '$lib/types';
+	import type { RateRequest, Rate, summarizeRequest } from '$lib/types';
 
 	const link = $page.url.searchParams.get('link');
 
@@ -52,18 +53,41 @@
 		};
 
 		// Enviar la información de la página al servidor para obtener la calificación
-		const response = await fetch('/api/rate', {
+		fetch('/api/rate', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(rateRequest)
+		}).then(async (response) => {
+			const rate: Rate = await response.json();
+
+			// Guardar la calificación en el store
+			storePage.setRate(rate);
 		});
 
-		const rate: Rate = await response.json();
+		const summarizeRequest: summarizeRequest = {
+			titulo: pageData.titulo,
+			descripcion: pageData.descripcion,
+			markdown: pageData.markdown
+		};
 
-		// Guardar la calificación en el store
-		storePage.setRate(rate);
+		// Enviar la información de la página al servidor para obtener la calificación
+		fetch('/api/summarize', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(summarizeRequest)
+		}).then(async (summaryStream) => {
+			if (summaryStream.body === null) {
+				return;
+			}
+
+			await decodeStreamData(summaryStream.body, (data: string) => {
+				storePage.resumen += data;
+			});
+		});
 	}
 </script>
 

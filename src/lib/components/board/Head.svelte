@@ -30,7 +30,9 @@
 		<Placeholder />
 	{:else}
 		<Badge color="green">
-			{storePage.rate.total}
+			10
+			<!--	{storePage.rate.total}
+				-->
 		</Badge>
 	{/if}
 </section>

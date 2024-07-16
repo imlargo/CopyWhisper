@@ -1,10 +1,12 @@
-import type { PageData, Rate } from '$lib/types';
+import type { Encabezado, PageData, Rate } from '$lib/types';
 import { pageState } from '$utils/enums';
 
 class StorePage {
 	data: PageData | null = $state(null);
 	rate: Rate | null = $state(null);
 	estado: number = $state(pageState.WAITING);
+	encabezados: Encabezado[] = $state([]);
+	resumen: string = $state('');
 
 	/*
 	 inicializar la store con los datos base de la pagina
@@ -30,6 +32,8 @@ class StorePage {
 		this.data = null;
 		this.rate = null;
 		this.estado = pageState.WAITING;
+		this.resumen = '';
+		this.encabezados = [];
 	}
 }
 

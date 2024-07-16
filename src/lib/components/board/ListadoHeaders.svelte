@@ -8,7 +8,7 @@
 	const headers = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6'];
 </script>
 
-<div class="flex gap-4 font-mono">
+<div class="flex gap-4">
 	{#if storePage.data !== null && !verificarEncabezados(storePage.data.encabezados)}
 		<i
 			class="bi bi-exclamation-triangle text-amber-400"
