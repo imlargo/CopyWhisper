@@ -14,53 +14,52 @@
 	</div>
 </section>
 
-<section class="page-container py-24 grid grid-cols-4 gap-x-8">
+<section class="page-container py-24 grid grid-cols-4 gap-x-6">
 	<Item
 		titulo="Ingresa tu sitio"
-		descripcion="Ingresa la URL de tu sitio. ¡Fácil y rápido!"
+		descripcion="Proporciona la URL de tu sitio web. ¡Así de fácil y rápido!"
 		icon="bi bi-search-heart"
 	/>
 
 	<Item
 		titulo="Análisis Detallado"
-		descripcion="Nuestra IA escanea y evalúa tu contenido en tiempo real."
+		descripcion="CopyWhisper escanea y analiza tu contenido en tiempo real."
 		icon="bi bi-stars"
 	/>
 
 	<Item
 		titulo="Calificación y Feedback"
-		descripcion="Recibe una calificación detallada y feedback sobre áreas de mejora."
+		descripcion="Obtén una calificación detallada y sugerencias sobre áreas de mejora."
 		icon="bi bi-activity"
 	/>
 
 	<Item
 		titulo="Recomendaciones Personalizadas"
-		descripcion="Autocompletado y recomendaciones para optimizar tu copywriting."
+		descripcion="Recibe autocompletado personalizado para mejorar el contenido."
 		icon="bi bi-award"
 	/>
 </section>
 
 <section class="page-container py-24">
 	<h2 class="text-6xl text-center">La Magia de CopyWhisper</h2>
-	<p class="text-center text-pretty w-8/12 text-zinc-400 mx-auto mt-3">
-		Descubre las potentes funcionalidades que hacen de CopyWhisper la herramienta definitiva para
-		mejorar tu copywriting.
+	<p class="text-center text-pretty w-6/12 text-zinc-400 mx-auto mt-3">
+		Descubre las potentes funcionalidades que hacen de CopyWhisper la herramienta definitiva para analizar y mejorar el copywriting de tu pagina.
 	</p>
 
 	<div class="mt-24 grid grid-cols-3 gap-x-7 gap-y-12">
 		<Feature
 			titulo="Análisis Detallado"
-			descripcion="Nuestra IA examina cada aspecto de tu contenido, desde la gramática hasta el tono y la estructura."
+			descripcion="CopyWhisper examina cada aspecto de tu contenido, desde la gramática hasta el tono y la estructura."
 		/>
 
 		<Feature
 			titulo="Calificación de Contenido"
-			descripcion="Obtén una puntuación clara y precisa que te indica la efectividad de tu copywriting."
+			descripcion="Obtén una puntuación detallada que mide la efectividad de tu copywriting."
 		/>
 
 		<Feature
 			titulo="Recomendaciones Personalizadas"
-			descripcion="Recibe sugerencias específicas basadas en el análisis de tu contenido, adaptadas a tus necesidades."
+			descripcion="Recibe sugerencias específicas basadas en el análisis de tu contenido, personalizadas a tus necesidades."
 		/>
 	</div>
 </section>
@@ -68,31 +67,31 @@
 <hr class="page-container hr-divider" />
 
 <section class="page-container py-24">
-	<h2 class="text-6xl text-center">Una herramienta creada para desarrolladores.</h2>
+	<h2 class="text-6xl text-center">Una Herramienta Creada para Todos.</h2>
 	<p class="text-center text-pretty w-8/12 text-zinc-400 mx-auto mt-3">
-		Perfecta para desarrolladores, redactores y profesionales del marketing, nuestra herramienta
-		hace que mejorar tu copywriting sea más fácil y efectivo que nunca.
+		CopyWhisper es perfecta para desarrolladores, redactores y profesionales del marketing, facilitando el análisis y mejora de tu copywriting.
 	</p>
 
 	<div class="mt-24 grid grid-cols-3 gap-x-7 gap-y-12">
 		<div class="mt-16">
 			<Rol
 				rol="Diseñadores"
-				descripcion="Reduce el tiempo y esfuerzo dedicados a la revisión de contenido, permitiendo a tu equipo enfocarse en el diseño."
+				descripcion="Reduce el tiempo y esfuerzo dedicados a la revisión de contenido para poder enfocarte en el diseño."
 				icon="bi bi-brush"
 			/>
 		</div>
 		<div>
 			<Rol
 				rol="Desarrolladores"
-				descripcion="CopyWhisper hace que sea sencillo para los desarrolladores revisar y mejorar el copywriting sin necesidad de ser expertos en el área."
+				descripcion="
+				CopyWhisper hace que sea sencillo revisar y mejorar el copywriting de tus páginas web sin tener que ser experto."
 				icon="bi bi-code-slash"
 			/>
 		</div>
 		<div class="mt-16">
 			<Rol
 				rol="Copywriters"
-				descripcion="Ahorra tiempo con nuestras recomendaciones automáticas detalladas y autocompletado."
+				descripcion="Ahorra tiempo con el análisis detallado y las sugerencias de autocompletado de CopyWhisper."
 				icon="bi bi-feather"
 			/>
 		</div>
@@ -102,10 +101,9 @@
 <section class="page-container py-24">
 	<div class="grid grid-cols-12 bg-white/5 py-24 rounded-2xl px-24 border border-violet-400/70">
 		<div class="col-span-6">
-			<h1 class="text-5xl font-medium mb-3">Empieza Hoy Mismo</h1>
+			<h1 class="text-5xl font-medium mb-3">Experimenta la magia de <span class="resaltado">CopyWhisper <i class="bi bi-stars text-4xl"></i></span></h1>
 			<p class="text-zinc-400 text-pretty">
-				No esperes más para transformar tu contenido web. Regístrate ahora en CopyWhisper y descubre
-				el poder de la inteligencia artificial para mejorar tu copywriting.
+				Ingresa el URL de tu sitio web y experimenta la magia de CopyWhisper. No esperes para hacer el copywriting de tu pagina web impactante y de alta calidad.
 			</p>
 		</div>
 

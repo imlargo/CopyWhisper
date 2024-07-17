@@ -38,7 +38,7 @@
 		transition: all 0.3s ease;
 
 		&:hover::before {
-			background: rgba(179, 86, 255, 0.3);
+			background: rgba(128, 86, 255, 0.3);
 		}
 
 		&::before {
@@ -53,7 +53,7 @@
 			border-radius: 999%;
 			filter: blur(45px);
 
-			background: rgba(171, 97, 255, 0.2);
+			background: rgba(128, 86, 255, 0.2);
 			transition: all 0.3s ease;
 		}
 	}

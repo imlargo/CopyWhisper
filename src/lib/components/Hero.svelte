@@ -1,6 +1,6 @@
 <section>
 	<h1 class="text-7xl text-center w-9/12 mx-auto">
-		Eleva tu copywritting con la precision de la <span class="typing">IA.</span>
+		Haz <span class="resaltado">brillar</span> el copywritting de tu pagina <span class="typing resaltado">web.</span>
 	</h1>
 
 	<p class="mt-4 text-center mx-auto w-8/12 text-pretty text-zinc-400 text-lg">

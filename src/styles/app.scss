@@ -77,3 +77,10 @@ body {
 .tippy-content {
 	white-space: pre-line !important;
 }
+
+.resaltado {
+	background: linear-gradient(90deg, #9f4bff 40%, #bf35ff 100%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
