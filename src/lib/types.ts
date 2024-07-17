@@ -51,9 +51,9 @@ interface Recomendacion {
 export interface Rate {
 	errores: {
 		cuantitativo: string;
-		cualitativo: string;
+		cualitativo: 'bajo' | 'medio' | 'alto' | 'excelente';
 		comentarios: string;
-		errores: string[];
+		errores: object[];
 	};
 	tono: {
 		cuantitativo: string;

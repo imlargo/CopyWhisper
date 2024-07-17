@@ -89,7 +89,10 @@ ${getCodeAsMarkdown(
 	"cualitativo": "${indicacionCualitativa}",
   "comentarios": "...",
 	"errores": [
-		"Array json de los errores identificados teniendo en cuenta los criterios y su solucion.",
+    {
+      error: "",
+      correccion: ""
+    }
 	]
   },
   "tono": {
