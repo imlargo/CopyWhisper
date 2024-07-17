@@ -2,7 +2,7 @@ import tippy from 'tippy.js';
 
 export function tooltipAction(element: HTMLElement, tooltip: string) {
 	const instance = tippy(element, {
-		content: tooltip,
+		content: tooltip
 	});
 
 	return {
@@ -13,5 +13,5 @@ export function tooltipAction(element: HTMLElement, tooltip: string) {
 		destroy() {
 			instance.destroy();
 		}
-	}
+	};
 }

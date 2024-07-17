@@ -11,19 +11,26 @@
 
 	let tooltip = $derived.by(() => {
 		if (rate === null) {
-			return "Cargando";
+			return 'Cargando';
 		}
 
-		const calificacion = rate.cualitativo === "bajo" ? "Baja" : rate.cualitativo === "medio" ? "Media" : rate.cualitativo === "alto" ? "Alta" : "Excelente";
+		const calificacion =
+			rate.cualitativo === 'bajo'
+				? 'Baja'
+				: rate.cualitativo === 'medio'
+					? 'Media'
+					: rate.cualitativo === 'alto'
+						? 'Alta'
+						: 'Excelente';
 
-		if (rate.hasOwnProperty("errores")) {
-			const errores = rate.errores.map(err => `${err.error} -> ${err.correccion}`).join("\n");
-			console.log(`${rate.cualitativo}, ${rate.comentarios}\n${errores}`)
+		if (rate.hasOwnProperty('errores')) {
+			const errores = rate.errores.map((err) => `${err.error} -> ${err.correccion}`).join('\n');
+			console.log(`${rate.cualitativo}, ${rate.comentarios}\n${errores}`);
 			return `Calificacion: ${calificacion}\n\n${rate.comentarios}\n\nErrores:\n${errores}`;
 		}
 
 		return `Calificacion: ${calificacion}\n\n${rate.comentarios}`;
-	})  
+	});
 </script>
 
 <div
