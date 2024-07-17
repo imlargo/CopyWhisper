@@ -37,7 +37,7 @@
 
 <div
 	use:tooltipAction={tooltip}
-	class="border border-zinc-600 rounded-xl px-7 py-7 bg-zinc-800/10 hover:bg-zinc-800/30 cursor-pointer"
+	class="border border-violet-400/40 rounded-xl px-7 py-7 bg-zinc-800/10 hover:bg-zinc-800/30 cursor-pointer"
 >
 	<div class="flex justify-between items-center text-zinc-500 text-sm font-mono">
 		<h5>

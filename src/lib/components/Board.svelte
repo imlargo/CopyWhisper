@@ -37,22 +37,22 @@
 	{#if storePage.estado === pageState.OK || storePage.estado === pageState.ANALIZADO}
 		<section class="grid grid-cols-4 gap-4 py-8">
 			<Stat
-				tooltip="Contenido y redaccion"
+				descripcion="Contenido y redaccion"
 				tipo="Contenido y redaccion"
 				rate={storePage.rate ? storePage.rate.contenido : null}
 			/>
 			<Stat
-				tooltip="Tono y estilo"
+				descripcion="Tono y estilo"
 				tipo="Tono y estilo"
 				rate={storePage.rate ? storePage.rate.tono : null}
 			/>
 			<Stat
-				tooltip="Persuasión y Conversión"
+				descripcion="Persuasión y Conversión"
 				tipo="Persuasión y Conversión"
 				rate={storePage.rate ? storePage.rate.persuacion : null}
 			/>
 			<Stat
-				tooltip="Gramatica y Ortografia"
+				descripcion="Gramatica y Ortografia"
 				tipo="Gramatica y Ortografia"
 				rate={storePage.rate ? storePage.rate.errores : null}
 			/>

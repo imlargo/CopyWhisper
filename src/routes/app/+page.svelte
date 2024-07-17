@@ -94,12 +94,16 @@
 <section class="page-container">
 	<h2 class="text-2xl font-medium mb-4">
 		{#if storePage.estado === pageState.WAITING}
-			<span>Cargando pagina...</span>
+			<i class="bi bi-arrow-repeat text-violet-400"></i>
+			<span class="animate-pulse">Cargando pagina...</span>
 		{:else if storePage.estado === pageState.OK}
-			<span>Analizando contenido...</span>
+			<i class="bi bi-stars text-violet-400"></i>
+			<span class="animate-pulse">Analizando contenido...</span>
 		{:else if storePage.estado === pageState.ANALIZADO}
-			<span>Resultado</span>
+			<i class="bi bi-award text-violet-400"></i>
+			<span>Analisis completado.</span>
 		{:else if storePage.estado === pageState.NOTOK}
+			<i class="bi bi-emoji-frown text-violet-400"></i>
 			<span> No se ha podido obtener la información de la página </span>
 		{/if}
 	</h2>
@@ -109,7 +113,10 @@
 
 <section class="page-container pb-12">
 	<div class="py-5 mb-8 border-y border-zinc-800 flex justify-between">
-		<h2 class="text-xl font-medium">Contenido</h2>
+		<h2 class="text-xl font-medium">
+			<i class="bi bi-text-paragraph resaltado"></i>
+			<span>Contenido</span>
+		</h2>
 
 		<ListadoHeaders />
 	</div>
