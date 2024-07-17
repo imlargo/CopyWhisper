@@ -24,7 +24,7 @@
 						: 'Excelente';
 
 		if (rate.hasOwnProperty('errores')) {
-			const errores = rate.errores.map((err) => `${err.error} -> ${err.correccion}`).join('\n');
+			const errores = rate.errores.map((err: any) => `${err.error} -> ${err.correccion}`).join('\n');
 			console.log(`${rate.cualitativo}, ${rate.comentarios}\n${errores}`);
 			return `Calificacion: ${calificacion}\n\n${rate.comentarios}\n\nErrores:\n${errores}`;
 		}
@@ -43,7 +43,7 @@
 		</h5>
 		<span
 			class="ring-4 p-1 size-1.5 rounded-full rate-{rate === null
-				? 'gris'
+				? 'gris animate-pulse'
 				: rate.cualitativo.toLowerCase()}"
 		></span>
 	</div>

@@ -2,7 +2,7 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateText, streamText } from 'ai';
 import { env } from '$env/dynamic/private';
 
-const TEMPERATURA = 0.5;
+const TEMPERATURA = 0.8;
 
 const provider = createGoogleGenerativeAI({
 	apiKey: env.GOOGLE_GENERATIVE_AI_API_KEY ?? ''
