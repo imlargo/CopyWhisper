@@ -11,7 +11,6 @@
 			class="flex mx-auto px-12 py-1.5 justify-center items-center gap-10 border border-white/10 rounded-full bg-white/5"
 		>
 			<a href="/">Home</a>
-			<a href="/app">App</a>
 		</div>
 	</div>
 

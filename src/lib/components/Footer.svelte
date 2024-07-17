@@ -15,10 +15,6 @@
 			<a href="/" class="py-1 flex gap-3 text-zinc-400 hover:text-zinc-300 transition-all">
 				<span>Home</span>
 			</a>
-
-			<a href="/about" class="py-1 flex gap-3 text-zinc-400 hover:text-zinc-300 transition-all">
-				<span>About</span>
-			</a>
 		</div>
 
 		<div class="flex flex-col gap-2">
