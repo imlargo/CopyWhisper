@@ -42,8 +42,10 @@
 
 <section class="page-container py-24">
 	<h2 class="text-6xl text-center">La Magia de CopyWhisper</h2>
-	<p class="text-center text-pretty w-6/12 text-zinc-400 mx-auto mt-3">
-		Descubre las potentes funcionalidades que hacen de CopyWhisper la herramienta definitiva para analizar y mejorar el copywriting de tu pagina.
+	<hr class="hr-header" />
+	<p class="text-center text-lg text-pretty w-7/12 text-zinc-400 mx-auto">
+		Descubre las potentes funcionalidades que hacen de CopyWhisper la herramienta definitiva para
+		analizar y mejorar el copywriting de tu pagina.
 	</p>
 
 	<div class="mt-24 grid grid-cols-3 gap-x-7 gap-y-12">
@@ -67,9 +69,11 @@
 <hr class="page-container hr-divider" />
 
 <section class="page-container py-24">
-	<h2 class="text-6xl text-center">Una Herramienta Creada para Todos.</h2>
-	<p class="text-center text-pretty w-8/12 text-zinc-400 mx-auto mt-3">
-		CopyWhisper es perfecta para desarrolladores, redactores y profesionales del marketing, facilitando el análisis y mejora de tu copywriting.
+	<h2 class="text-6xl text-center">Una Herramienta para Todos.</h2>
+	<hr class="hr-header" />
+	<p class="text-center text-lg text-pretty w-7/12 text-zinc-400 mx-auto">
+		CopyWhisper es perfecta para desarrolladores, redactores y profesionales del marketing,
+		facilitando el análisis y mejora de tu copywriting.
 	</p>
 
 	<div class="mt-24 grid grid-cols-3 gap-x-7 gap-y-12">
@@ -101,9 +105,14 @@
 <section class="page-container py-24">
 	<div class="cta grid grid-cols-12 bg-white/5 py-24 rounded-2xl px-24 border border-violet-400/70">
 		<div class="col-span-6">
-			<h1 class="text-5xl font-medium mb-3">Experimenta la magia de <span class="resaltado">CopyWhisper <i class="bi bi-stars text-4xl"></i></span></h1>
+			<h1 class="text-5xl font-medium mb-3">
+				Experimenta la magia de <span class="resaltado"
+					>CopyWhisper <i class="bi bi-stars text-4xl"></i></span
+				>
+			</h1>
 			<p class="text-zinc-400 text-pretty">
-				Ingresa el URL de tu sitio web y experimenta la magia de CopyWhisper. No esperes para hacer el copywriting de tu pagina web impactante y de alta calidad.
+				Ingresa el URL de tu sitio web y experimenta la magia de CopyWhisper. No esperes para hacer
+				el copywriting de tu pagina web impactante y de alta calidad.
 			</p>
 		</div>
 
@@ -116,7 +125,6 @@
 </section>
 
 <style lang="scss">
-
 	.cta {
 		position: relative;
 		overflow: hidden;
@@ -131,7 +139,7 @@
 			aspect-ratio: 1/1;
 			z-index: -1;
 			border-radius: 999px;
-			background-color: rgba(114, 20, 255, 0.3);
+			background-color: rgba(114, 20, 255, 0.2);
 			filter: blur(128px);
 		}
 
@@ -145,10 +153,15 @@
 			aspect-ratio: 1/1;
 			z-index: -1;
 			border-radius: 999px;
-			background-color: rgba(114, 20, 255, 0.3);
+			background-color: rgba(114, 20, 255, 0.2);
 			filter: blur(128px);
 		}
 	}
+
+	.hr-header {
+		@apply border-none bg-violet-500/30 h-1.5 w-4/12 mx-auto mt-4 mb-3 rounded-full;
+	}
+
 	.hr-divider {
 		@apply border-t border-violet-400/50 shadow-xl shadow-violet-400;
 

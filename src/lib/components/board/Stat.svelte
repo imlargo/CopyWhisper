@@ -24,7 +24,9 @@
 						: 'Excelente';
 
 		if (rate.hasOwnProperty('errores')) {
-			const errores = rate.errores.map((err: any) => `${err.error} -> ${err.correccion}`).join('\n');
+			const errores = rate.errores
+				.map((err: any) => `${err.error} -> ${err.correccion}`)
+				.join('\n');
 			console.log(`${rate.cualitativo}, ${rate.comentarios}\n${errores}`);
 			return `Calificacion: ${calificacion}\n\n${rate.comentarios}\n\nErrores:\n${errores}`;
 		}
