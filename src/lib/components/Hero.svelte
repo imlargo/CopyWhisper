@@ -5,8 +5,8 @@
 	</h1>
 
 	<p class="mt-4 text-lg text-center mx-auto w-8/12 text-pretty text-zinc-400">
-		Analiza, optimiza y recibe recomendaciones personalizadas para simplificar el proceso de
-		creación de contenido, asegurando páginas web impactantes y de alta calidad.
+		Transforma el contenido de tu pagina web con análisis avanzado y recomendaciones personalizadas
+		para lograr páginas web impactantes y de alta calidad.
 	</p>
 </section>
 
