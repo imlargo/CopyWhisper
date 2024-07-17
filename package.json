@@ -43,7 +43,6 @@
 	"dependencies": {
 		"@ai-sdk/google": "^0.0.26",
 		"@ai-sdk/openai": "^0.0.36",
-		"@ai-sdk/svelte": "^0.0.14",
 		"ai": "^3.2.19",
 		"marked": "^13.0.2",
 		"tippy.js": "^6.3.7",
