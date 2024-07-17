@@ -99,7 +99,7 @@
 </section>
 
 <section class="page-container py-24">
-	<div class="grid grid-cols-12 bg-white/5 py-24 rounded-2xl px-24 border border-violet-400/70">
+	<div class="cta grid grid-cols-12 bg-white/5 py-24 rounded-2xl px-24 border border-violet-400/70">
 		<div class="col-span-6">
 			<h1 class="text-5xl font-medium mb-3">Experimenta la magia de <span class="resaltado">CopyWhisper <i class="bi bi-stars text-4xl"></i></span></h1>
 			<p class="text-zinc-400 text-pretty">
@@ -116,6 +116,39 @@
 </section>
 
 <style lang="scss">
+
+	.cta {
+		position: relative;
+		overflow: hidden;
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: -30%;
+			left: -6%;
+			height: auto;
+			width: 25%;
+			aspect-ratio: 1/1;
+			z-index: -1;
+			border-radius: 999px;
+			background-color: rgba(114, 20, 255, 0.3);
+			filter: blur(128px);
+		}
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -30%;
+			right: -6%;
+			height: auto;
+			width: 25%;
+			aspect-ratio: 1/1;
+			z-index: -1;
+			border-radius: 999px;
+			background-color: rgba(114, 20, 255, 0.3);
+			filter: blur(128px);
+		}
+	}
 	.hr-divider {
 		@apply border-t border-violet-400/50 shadow-xl shadow-violet-400;
 
