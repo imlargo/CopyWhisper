@@ -24,6 +24,7 @@
 
 			element.appendChild(clickableIcon);
 
+			element.dataset.content = element.textContent as string;
 			clickableIcon.addEventListener('click', async () => {
 				if (storePage.data === null) {
 					return;
@@ -35,7 +36,7 @@
 					descripcion: storePage.data.descripcion,
 					markdown: storePage.data.markdown,
 					elemento: {
-						content: element.textContent as string,
+						content: element.dataset.content as string,
 						tag: element.tagName
 					}
 				};
