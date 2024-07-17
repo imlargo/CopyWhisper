@@ -2,6 +2,8 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateText, streamText } from 'ai';
 import { env } from '$env/dynamic/private';
 
+const TEMPERATURA = 0.5;
+
 const provider = createGoogleGenerativeAI({
 	apiKey: env.GOOGLE_GENERATIVE_AI_API_KEY ?? ''
 });
@@ -26,6 +28,7 @@ export async function generateTextResponse(system: string, prompt: string): Prom
 export async function generateStreamResponse(system: string, prompt: string) {
 	const result = await streamText({
 		model: model,
+		temperature: TEMPERATURA,
 		system: system,
 		prompt: prompt
 	});
