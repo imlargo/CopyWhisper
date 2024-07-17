@@ -6,7 +6,7 @@ export function verificarEncabezados(encabezados: Encabezado[]): boolean {
 	for (const encabezado of encabezados) {
 		const currNivel = parseInt(encabezado.tag.slice(1));
 
-		if (currNivel > inicial) {
+		if (currNivel < inicial) {
 			return false;
 		}
 

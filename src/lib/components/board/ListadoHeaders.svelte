@@ -9,7 +9,12 @@
 </script>
 
 <div class="flex gap-4">
-	{#if storePage.data !== null && !verificarEncabezados(storePage.data.encabezados)}
+	{#if storePage.data !== null && verificarEncabezados(storePage.data.encabezados)}
+		<i
+			class="bi bi-check-lg text-zinc-600"
+			use:tooltipAction={'La página web sigue una estructura jerárquica logica y ordenada en los encabezados'}
+		></i>
+	{:else if storePage.data !== null && !verificarEncabezados(storePage.data.encabezados)}
 		<i
 			class="bi bi-exclamation-triangle text-amber-400"
 			use:tooltipAction={'La página web no sigue una estructura jerárquica logica y ordenada en los encabezados'}
