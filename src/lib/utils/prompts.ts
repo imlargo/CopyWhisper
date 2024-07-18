@@ -79,41 +79,7 @@ Items a calificar y criterios de calificacion:
 
 ${CRITERIOS}
 
-Para cada uno de los ítems debes generar una calificacion cualitativa y cuantitativa teniendo en cuenta los criterios. Además, incluye un parrafo breve pero detallado para cada ítem con tus comentarios. Ten en cuenta que se busca un análisis profundo y preciso que refleje los estándares de un copywriter profesional experimentado. Devuelve la respuesta en formato JSON con la siguiente estructura:
-
-${getCodeAsMarkdown(
-	'json',
-	`{
-  "errores": {
-  "cuantitativo": "${indicacionCuantitativa}",
-	"cualitativo": "${indicacionCualitativa}",
-  "comentarios": "...",
-	"errores": [
-    {
-      error: "",
-      correccion: ""
-    }
-	]
-  },
-  "tono": {
-    "cuantitativo": "${indicacionCuantitativa}",
-	"cualitativo": "${indicacionCualitativa}",
-    "comentarios": "..."
-  },
-  "persuacion": {
-    "cuantitativo": "${indicacionCuantitativa}",
-	"cualitativo": "${indicacionCualitativa}",
-    "comentarios": "..."
-  },
-  "contenido": {
-    "cuantitativo": "${indicacionCuantitativa}",
-	"cualitativo": "${indicacionCualitativa}",
-    "comentarios": "..."
-	
-  }
-}`
-)}
-
+Para cada uno de los ítems debes generar una calificacion cualitativa y cuantitativa (calificacion cuantitativa del 1 al 10, siendo 10 excelente) teniendo en cuenta los criterios y tambien el contexto de la pagina. Además, incluye un parrafo breve pero detallado para cada ítem con tus comentarios y otro con tus recomendaciones. Ten en cuenta que se busca un análisis profundo y preciso que refleje los estándares de un copywriter profesional experimentado, sin embargo debes entender la creatividad y ser mas flexible y menos estricto.
 `,
 			prompt: `
 A continuación, se te proporciona el contenido de la página web:
