@@ -1,9 +1,9 @@
-import type { Encabezado, PageData, Rate } from '$lib/types';
+import type { Encabezado, PageData, RateResponse } from '$lib/types';
 import { pageState } from '$utils/enums';
 
 class StorePage {
 	data: PageData | null = $state(null);
-	rate: Rate | null = $state(null);
+	rate: RateResponse | null = $state(null);
 	estado: number = $state(pageState.WAITING);
 	encabezados: Encabezado[] = $state([]);
 	resumen: string = $state('');

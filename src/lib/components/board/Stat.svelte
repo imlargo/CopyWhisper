@@ -1,17 +1,18 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { tooltipAction } from '$src/lib/utils/tooltip';
+	import type { Rate } from '$lib/types';
 
 	type Props = {
 		tipo: string;
-		rate: any;
+		rate: Rate | null;
 		descripcion?: string;
 	};
 	const { tipo, rate, descripcion }: Props = $props();
 
 	let tooltip = $derived.by(() => {
 		if (rate === null) {
-			return 'Cargando';
+			return 'Calificando...';
 		}
 
 		const calificacion =
@@ -23,15 +24,7 @@
 						? 'Alta'
 						: 'Excelente';
 
-		if (rate.hasOwnProperty('errores')) {
-			const errores = rate.errores
-				.map((err: any) => `${err.error} -> ${err.correccion}`)
-				.join('\n');
-			console.log(`${rate.cualitativo}, ${rate.comentarios}\n${errores}`);
-			return `Calificacion: ${calificacion}\n\n${rate.comentarios}\n\nErrores:\n${errores}`;
-		}
-
-		return `Calificacion: ${calificacion}\n\n${rate.comentarios}`;
+		return `Calificacion: ${calificacion}\n\nComentarios: ${rate.comentarios}\n\nRecomendaciones: ${rate.sugerencias}`;
 	});
 </script>
 

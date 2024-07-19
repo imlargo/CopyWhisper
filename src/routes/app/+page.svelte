@@ -15,7 +15,7 @@
 	import Markdown from '$src/lib/components/board/Markdown.svelte';
 	import ListadoHeaders from '$src/lib/components/board/ListadoHeaders.svelte';
 
-	import type { RateRequest, Rate, summarizeRequest } from '$lib/types';
+	import type { RateRequest, RateResponse, summarizeRequest } from '$lib/types';
 
 	const link = $page.url.searchParams.get('link');
 
@@ -60,7 +60,7 @@
 			},
 			body: JSON.stringify(rateRequest)
 		}).then(async (response) => {
-			const rate: Rate = await response.json();
+			const rate: RateResponse = await response.json();
 
 			// Guardar la calificación en el store
 			storePage.setRate(rate);

@@ -2,13 +2,13 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateText, streamText, generateObject, streamObject } from 'ai';
 import { env } from '$env/dynamic/private';
 
-const TEMPERATURA = 0.75;
+const TEMPERATURA = 0.8;
 
 const provider = createGoogleGenerativeAI({
-	apiKey: env.GOOGLE_GENERATIVE_AI_API_KEY ?? ''
+	apiKey: env.AI_API_KEY ?? ''
 });
 
-const model = provider('models/gemini-1.5-pro-latest');
+const model = provider('models/gemini-pro');
 
 /*
  * Generar respuesta en base a un prompt y devolverla como un string

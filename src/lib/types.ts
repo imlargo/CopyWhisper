@@ -48,28 +48,18 @@ interface Recomendacion {
 	debilidades: string[];
 }
 
+export interface RateResponse {
+	contenido: Rate;
+	tono: Rate;
+	persuacion: Rate;
+	errores: Rate;
+}
+
 export interface Rate {
-	errores: {
-		cuantitativo: string;
-		cualitativo: 'bajo' | 'medio' | 'alto' | 'excelente';
-		comentarios: string;
-		errores: object[];
-	};
-	tono: {
-		cuantitativo: string;
-		cualitativo: string;
-		comentarios: string;
-	};
-	persuacion: {
-		cuantitativo: string;
-		cualitativo: string;
-		comentarios: string;
-	};
-	contenido: {
-		cuantitativo: string;
-		cualitativo: string;
-		comentarios: string;
-	};
+	cuantitativo: string;
+	cualitativo: 'bajo' | 'medio' | 'alto' | 'excelente';
+	comentarios: string;
+	sugerencias: string;
 }
 export interface OldRate {
 	resumen: string;
