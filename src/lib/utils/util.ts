@@ -10,7 +10,7 @@ export function verificarEncabezados(encabezados: Encabezado[]): boolean {
 			return false;
 		}
 
-		if (anterior - currNivel > 1) {
+		if (currNivel - anterior > 1) {
 			return false;
 		}
 
