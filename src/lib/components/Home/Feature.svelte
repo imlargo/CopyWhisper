@@ -17,6 +17,7 @@
 		position: relative;
 		transition: all 0.3s ease;
 		overflow: hidden;
+		transition: all 0.3s ease;
 
 		&::after {
 			content: '';
@@ -34,9 +35,6 @@
 			opacity: 0.3;
 			z-index: -1;
 		}
-
-		transition: all 0.3s ease;
-
 		&:hover::before {
 			background: rgba(128, 86, 255, 0.3);
 		}
