@@ -19,20 +19,9 @@ export interface PageData {
 	renderedMarkdown: string;
 }
 
-export interface EncabezadoReq extends Encabezado {
-	tag: string;
-	content: string;
-	id: number;
-}
-
 export interface Prompt {
 	sys: string;
 	prompt: string;
-}
-
-export interface Calificacion {
-	encabezado: string;
-	calificacion: number;
 }
 
 export interface RateRequest {
@@ -40,12 +29,6 @@ export interface RateRequest {
 	titulo: string;
 	descripcion: string;
 	markdown: string;
-	encabezados: EncabezadoReq[];
-}
-
-interface Recomendacion {
-	fortalezas: string[];
-	debilidades: string[];
 }
 
 export interface RateResponse {
@@ -60,13 +43,6 @@ export interface Rate {
 	cualitativo: 'bajo' | 'medio' | 'alto' | 'excelente';
 	comentarios: string;
 	sugerencias: string;
-}
-export interface OldRate {
-	resumen: string;
-	total: number;
-	errores: string[];
-	recomendaciones: Recomendacion;
-	calificaciones: Calificacion[];
 }
 
 export interface ImproveElement {

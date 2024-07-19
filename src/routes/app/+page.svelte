@@ -48,8 +48,7 @@
 			link: pageData.link,
 			titulo: pageData.titulo,
 			descripcion: pageData.descripcion,
-			markdown: pageData.markdown,
-			encabezados: pageData.encabezados.map((encabezado, i) => ({ id: i + 1, ...encabezado }))
+			markdown: pageData.markdown
 		};
 
 		// Enviar la información de la página al servidor para obtener la calificación

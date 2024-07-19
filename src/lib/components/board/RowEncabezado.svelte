@@ -1,13 +1,10 @@
 <script lang="ts">
-	import type { Encabezado, Calificacion } from '$lib/types';
-	import Placeholder from '$components/Placeholder.svelte';
-	import LightRate from './LightRate.svelte';
+	import type { Encabezado } from '$lib/types';
 
 	type Props = {
 		encabezado: Encabezado;
-		rate: Calificacion | null;
 	};
-	const { encabezado, rate }: Props = $props();
+	const { encabezado }: Props = $props();
 
 	const nivel = parseInt(encabezado.tag.slice(1));
 	// Calcular profundidad del nodo en el árbol para aplicar padding
@@ -17,19 +14,6 @@
 <span class="header flex items-center gap-2 py-1.5 text-zinc-" style:--depth={depth}>
 	<i class="bi bi-type-h{nivel} text-zinc-600"></i>
 	<span class="truncate">{encabezado.content}</span>
-	{#if rate === null}
-		<Placeholder />
-	{:else}
-		<LightRate
-			color={rate.calificacion < 3
-				? 'red'
-				: rate.calificacion < 7
-					? 'yellow'
-					: rate.calificacion === 10
-						? 'purple'
-						: 'green'}
-		></LightRate>
-	{/if}
 </span>
 
 <style lang="scss">
