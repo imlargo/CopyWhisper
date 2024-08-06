@@ -24,6 +24,7 @@
 
 <div use:searchAction class="flex gap-3 w-full">
 	<input
+		value="porfolio.dev"
 		type="text"
 		class="rounded-full py-3 px-8 text-black w-full shadow-lg shadow-violet-500/20 focus:shadow-violet-500/50 border border-violet-500/40 font-mono"
 		placeholder="Ingresa el link de tu sitio"

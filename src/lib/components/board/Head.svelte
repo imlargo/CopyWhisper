@@ -26,15 +26,6 @@
 		</div>
 	</div>
 
-	{#if storePage.rate === null}
-		<Placeholder />
-	{:else}
-		<Badge color="green">
-			10
-			<!--	{storePage.rate.total}
-				-->
-		</Badge>
-	{/if}
 </section>
 
 <style lang="scss">

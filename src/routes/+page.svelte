@@ -159,7 +159,7 @@
 	}
 
 	.hr-header {
-		@apply border-none bg-violet-500/30 h-1.5 w-4/12 mx-auto mt-4 mb-3 rounded-full;
+		@apply border-none bg-violet-500/80 h-1.5 w-4/12 mx-auto mt-4 mb-3 rounded-full;
 	}
 
 	.hr-divider {
